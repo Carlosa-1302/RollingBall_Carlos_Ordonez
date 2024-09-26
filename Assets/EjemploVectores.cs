@@ -16,6 +16,7 @@ public class EjemploVectores : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //MOVIMINETOS CINEMATICOS
         transform.position += new Vector3(1, 0, 0) * 5 * Time.deltaTime;
     }
 }
