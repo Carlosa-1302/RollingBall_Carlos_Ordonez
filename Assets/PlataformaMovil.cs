@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class PlataformaMovil : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField]  Vector3 plataforma  ;
+    float timer = 0;
+    bool desactivarTimer = true;
     void Update()
     {
-         transform.Translate(new Vector3 (0,0,1) * 3 * Time.deltaTime);
+
+        transform.Translate(plataforma * 3 * Time.deltaTime, Space.World);
+        timer += Time.deltaTime;
+        if (timer >= 2)
+        {
+            plataforma = plataforma * -1;
+            timer = 0;
+        }
     }
 }
+        /*if ( desactivarTimer  == true)
+        {
+            transform.Translate(plataforma * 3 * Time.deltaTime, Space.World);
+            timer += Time.deltaTime;
+            if (timer >= 5)
+            {
+                plataforma = plataforma * -1;
+                desactivarTimer = false;
+            }
+        }*/
