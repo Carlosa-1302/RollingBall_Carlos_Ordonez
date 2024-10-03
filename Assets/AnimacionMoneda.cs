@@ -15,6 +15,6 @@ public class AnimacionMoneda : MonoBehaviour
     {
         //transform.Rotate(0,0,0 * 35 * Time.deltaTime,Space.World);//el space.world es para que use x,y,z del mundo no del objeto
         
-        transform.Rotate (new Vector3(0,1,0) * 10 * Time.deltaTime);
+        transform.Rotate (new Vector3(0,1,0) * 10 * Time.deltaTime,Space.World);
     }
 }
