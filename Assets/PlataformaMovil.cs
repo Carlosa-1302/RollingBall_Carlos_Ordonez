@@ -10,7 +10,7 @@ public class PlataformaMovil : MonoBehaviour
     void Update()
     {
 
-        transform.Translate(plataforma * 3 * Time.deltaTime, Space.World);
+        transform.Translate(plataforma * 1 * Time.deltaTime, Space.World);
         timer += Time.deltaTime;
         if (timer >= 2)
         {
