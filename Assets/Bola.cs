@@ -19,7 +19,7 @@ public class Bola : MonoBehaviour
 
         //esto es menos optimo
         GetComponent<Rigidbody>().mass = 5;
-        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().drag = 4f;
     }
 
@@ -44,5 +44,12 @@ public class Bola : MonoBehaviour
             rb.AddForce(new Vector3 (0,1,0) * 5, ForceMode.Impulse);
         }
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coleccionable"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
