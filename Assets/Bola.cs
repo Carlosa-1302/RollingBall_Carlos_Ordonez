@@ -7,6 +7,10 @@ public class Bola : MonoBehaviour
     //se llama a la variable y pones nombre
     Rigidbody rb;
     // Start is called before the first frame update
+
+
+    [SerializeField]int puntos;
+    Vector3 posicionInicial;
     void Start()
     {
         //este es mas optimo
@@ -21,6 +25,10 @@ public class Bola : MonoBehaviour
         GetComponent<Rigidbody>().mass = 5;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().drag = 4f;
+
+
+
+        posicionInicial = transform.position;
     }
 
     // Update is called once per frame
@@ -48,6 +56,11 @@ public class Bola : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Coleccionable"))
+        {
+            puntos++;
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Vacio")) ;
         {
             Destroy(other.gameObject);
         }
