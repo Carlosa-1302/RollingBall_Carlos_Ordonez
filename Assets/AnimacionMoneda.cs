@@ -17,11 +17,5 @@ public class AnimacionMoneda : MonoBehaviour
         
         transform.Rotate (new Vector3(0,1,0) * 10 * Time.deltaTime,Space.World);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Coleccionable"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
+    
 }
