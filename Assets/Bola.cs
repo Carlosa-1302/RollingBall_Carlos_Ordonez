@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Bola : MonoBehaviour
@@ -11,6 +12,7 @@ public class Bola : MonoBehaviour
 
     [SerializeField]int puntos;
     Vector3 posicionInicial;
+    [SerializeField]TMP_Text textoPuntuacion;
     void Start()
     {
         //este es mas optimo
@@ -58,6 +60,7 @@ public class Bola : MonoBehaviour
         if (other.gameObject.CompareTag("Coleccionable"))
         {
             puntos++;
+            textoPuntuacion.SetText("score"+puntos);
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Vacio")) ;
