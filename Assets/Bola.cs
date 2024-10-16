@@ -63,9 +63,11 @@ public class Bola : MonoBehaviour
             textoPuntuacion.SetText("score"+puntos);
             Destroy(other.gameObject);
         }
-        if (other.gameObject.CompareTag("Vacio")) ;
+
+
+        /*if (other.gameObject.CompareTag("Vacio")) ;
         {
             Destroy(other.gameObject);
-        }
+        }*/
     }
 }
