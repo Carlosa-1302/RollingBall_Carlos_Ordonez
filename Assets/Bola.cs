@@ -65,9 +65,14 @@ public class Bola : MonoBehaviour
         }
 
 
+
         /*if (other.gameObject.CompareTag("Vacio")) ;
         {
             Destroy(other.gameObject);
         }*/
+    }
+    private void DetectarSuelo()
+    {
+        Physics.Raycast(transform.position, new Vector3(0, -1, 0), 0.5f);
     }
 }
