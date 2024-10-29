@@ -28,20 +28,24 @@ public class ThirdPerson : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
 
-        Vector2 input = new Vector3(h, v).normalized;
+        Vector3 input = new Vector3(h, v, 0);
 
-        float angulo = MathF.Atan2(input.x, input.y)* Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+        float anguloRotacion = Mathf.Atan2(input.x, input.y)*Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
-        transform.eulerAngles = new Vector3(0, angulo, 0);
+        transform.eulerAngles =new Vector3(0, anguloRotacion, 0);
 
-        if(input.magnitude > 0 )
+        if (input.magnitude > 0)
         {
-            Vector3 movimiento = Quaternion.Euler(0,angulo,0)*Vector3.forward;
+            Vector3 movimiento = Quaternion.Euler(0, anguloRotacion,0)*Vector3.forward;
 
-            controller.Move( movimiento* velocidadMovimiento * Time.deltaTime );
+            controller.Move(movimiento*velocidadMovimiento*Time.deltaTime);
         }
-
         
     }
+    private void AplicarGravedad()
+    {
+       
+    }
 }
+
 
