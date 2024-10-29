@@ -41,34 +41,7 @@ public class ThirdPerson : MonoBehaviour
             controller.Move( movimiento* velocidadMovimiento * Time.deltaTime );
         }
 
-        /*if (h != 0 || v != 0)
-        {
-            
-            Vector3 input = new Vector3(h, 0, v).normalized;
-            float angulo = MathF.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-
-            transform.eulerAngles = new Vector3(0, angulo, 0);
-
-
-            if (Input.GetKey(KeyCode.LeftShift)) // Correr
-            {
-                controller.Move(input * velocidadCorrer * Time.deltaTime);
-                animator.SetBool("running", true);
-                animator.SetBool("walking", false);
-            }
-            else // Caminar
-            {
-                controller.Move(input * velocidadMovimiento * Time.deltaTime);
-                animator.SetBool("walking", true);
-                animator.SetBool("running", false);
-            }
-        }
-        else
-        {
-            // Si no hay movimiento, el personaje está en Idle
-            animator.SetBool("walking", false);
-            animator.SetBool("running", false);
-        }*/
+        
     }
 }
 
