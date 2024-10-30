@@ -7,7 +7,7 @@ public class Enemigo : MonoBehaviour
 {
     private NavMeshAgent agent;
 
-    private ThirdPerson player;
+    private Player player;
     //El enemigo tiene que persguir al Player
 
 
@@ -16,7 +16,7 @@ public class Enemigo : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindAnyObjectByType<ThirdPerson>();
+        player = GameObject.FindAnyObjectByType<Player>();
     }
 
     // Update is called once per frame
