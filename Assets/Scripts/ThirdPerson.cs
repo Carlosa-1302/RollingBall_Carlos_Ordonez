@@ -12,25 +12,37 @@ public class ThirdPerson : MonoBehaviour
     [SerializeField] private float velocidadCorrer;
     private CharacterController controller;
     private Animator animator;
+
+    private float factorGravedad = 9.81f;
+    private Vector3 movimientoVertical;
+
+
+
+    [SerializeField]private float fuerzaSalto;
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        rb = GetComponentInChildren<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
         MoverYRotar();
+        //AplicarGravedad();
+        Saltar();
     }
-    private void MoverYRotar()
+     void MoverYRotar()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
 
-        Vector3 input = new Vector3(h, v,0);
+        Vector3 input = new Vector3(h, v, 0);
 
         float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
@@ -60,7 +72,23 @@ public class ThirdPerson : MonoBehaviour
         }
 
     }
+    
+    private void AplicarGravedad()
+    {
+        movimientoVertical.y += factorGravedad * Time.deltaTime;
 
+        controller.Move(movimientoVertical*Time.deltaTime);
+
+    }
+    private void Saltar()
+    {
+        if (controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            movimientoVertical.y = fuerzaSalto;
+        }
+    }
+
+    
 }
 
 
