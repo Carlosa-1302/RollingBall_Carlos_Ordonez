@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
         AplicarGravedad();
         if (EnSuelo())
         {
+
             movimientoVertical.y = 0;
             Saltar();
 
@@ -59,29 +60,33 @@ public class Player : MonoBehaviour
 
         Vector3 input = new Vector3(h, v, 0);
 
-        float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
         //transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
 
-        Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
 
-        //Roto el cuerpo de forma constante con la rotacion "y" de la camara
-        transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
 
         if (input.magnitude > 0)
         {
+            float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+            transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
+             Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+            
 
-            controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                controller.Move(movimiento * velocidadCorrer * Time.deltaTime);
 
-            animator.SetBool("walking", true);
-            animator.SetBool("running", false);
-        }
-        else if (Input.GetKey(KeyCode.LeftShift))
-        {
-            controller.Move(movimiento * velocidadCorrer * Time.deltaTime);
+                animator.SetBool("walking", false);
+                animator.SetBool("running", true);
+            }
+            else
+            {
+                controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
+                animator.SetBool("walking", true);
+                animator.SetBool("running", false);
+            }
+            
 
-            animator.SetBool("walking", false);
-            animator.SetBool("running", true);
         }
         else
         {
@@ -101,6 +106,8 @@ public class Player : MonoBehaviour
     private bool EnSuelo()
     {
         bool resultado = Physics.CheckSphere(pies.position, radioDeteccion, queEsSuelo);
+        animator.SetBool("landing",true);
+         
         return resultado;
     }
     private void OnDrawGizmos()
@@ -113,6 +120,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             movimientoVertical.y = Mathf.Sqrt(-2 * factorGravedad * alturaSalto);
+            animator.SetBool("jumping", true);
         }
     }
 
