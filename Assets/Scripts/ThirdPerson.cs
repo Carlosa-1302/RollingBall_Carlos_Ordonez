@@ -13,7 +13,7 @@ public class ThirdPerson : MonoBehaviour
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float velocidadCorrer;
     [SerializeField] private float alturaSalto;
-    [SerializeField] private float factorGravedad = 9.81f;
+    [SerializeField] private float factorGravedad ;
 
 
 
