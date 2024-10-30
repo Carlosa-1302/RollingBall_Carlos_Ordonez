@@ -8,33 +8,53 @@ using Input = UnityEngine.Input;
 
 public class ThirdPerson : MonoBehaviour
 {
+
+    [Header("Movimiento")]
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float velocidadCorrer;
+    [SerializeField] private float alturaSalto;
+    [SerializeField] private float factorGravedad = 9.81f;
+
+
+
+    [Header("Deteccion Suelo")]
+
+    [SerializeField] private float radioDeteccion;
+    [SerializeField] private Transform pies;
+    [SerializeField] private LayerMask queEsSuelo;
+
+
     private CharacterController controller;
     private Animator animator;
 
-    private float factorGravedad = 9.81f;
+    //Me sirve tanto para la gravedada como para los saltos
     private Vector3 movimientoVertical;
 
 
 
     [SerializeField]private float fuerzaSalto;
-    Rigidbody rb;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
-        rb = GetComponentInChildren<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;// bloquea el raton en centro de la pantalla y lo oculta
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         MoverYRotar();
-        //AplicarGravedad();
-        Saltar();
+        AplicarGravedad();
+        if (EnSuelo())
+        {
+            movimientoVertical.y = 0;
+          Saltar();
+
+        }
     }
      void MoverYRotar()
     {
@@ -46,9 +66,12 @@ public class ThirdPerson : MonoBehaviour
 
         float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
-        transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
+        //transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
         
         Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+
+        //Roto el cuerpo de forma constante con la rotacion "y" de la camara
+        transform.rotation =Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
 
         if (input.magnitude > 0)
         {
@@ -80,13 +103,24 @@ public class ThirdPerson : MonoBehaviour
         controller.Move(movimientoVertical*Time.deltaTime);
 
     }
+    private bool EnSuelo()
+    {
+        bool resultado = Physics.CheckSphere(pies.position,radioDeteccion,queEsSuelo);
+        return resultado;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(pies.position,radioDeteccion);
+    }
     private void Saltar()
     {
-        if (controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            movimientoVertical.y = fuerzaSalto;
+            movimientoVertical.y = Mathf.Sqrt(-2 * factorGravedad * alturaSalto);
         }
     }
+
 
     
 }
