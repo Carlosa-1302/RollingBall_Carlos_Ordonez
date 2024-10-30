@@ -46,7 +46,8 @@ public class Player : MonoBehaviour
         AplicarGravedad();
         if (EnSuelo())
         {
-
+            animator.SetBool("landing",false);
+            animator.SetBool("jumping",false );
             movimientoVertical.y = 0;
             Saltar();
 
