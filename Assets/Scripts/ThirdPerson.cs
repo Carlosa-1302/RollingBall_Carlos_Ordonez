@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using Input = UnityEngine.Input;
 
 public class ThirdPerson : MonoBehaviour
 {
@@ -14,7 +16,7 @@ public class ThirdPerson : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -28,24 +30,37 @@ public class ThirdPerson : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
 
-        Vector3 input = new Vector3(h, v, 0);
+        Vector3 input = new Vector3(h, v,0);
 
-        float anguloRotacion = Mathf.Atan2(input.x, input.y)*Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+        float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
-        transform.eulerAngles =new Vector3(0, anguloRotacion, 0);
+        transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
+        
+        Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
 
         if (input.magnitude > 0)
         {
-            Vector3 movimiento = Quaternion.Euler(0, anguloRotacion,0)*Vector3.forward;
 
-            controller.Move(movimiento*velocidadMovimiento*Time.deltaTime);
+            controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
+
+            animator.SetBool("walking", true);
+            animator.SetBool("running", false);
         }
-        
+        else if (Input.GetKey(KeyCode.LeftShift))
+        {
+            controller.Move(movimiento * velocidadCorrer * Time.deltaTime);
+
+            animator.SetBool("walking", false);
+            animator.SetBool("running", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+            animator.SetBool("running", false);
+        }
+
     }
-    private void AplicarGravedad()
-    {
-       
-    }
+
 }
 
 
