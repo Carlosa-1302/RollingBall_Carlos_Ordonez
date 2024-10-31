@@ -69,7 +69,12 @@ public class Player : MonoBehaviour
         if (input.magnitude > 0)
         {
             float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-            transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
+
+            Quaternion rotacionSuave = Quaternion.Euler(0,anguloRotacion, 0);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotacionSuave, 10 * Time.deltaTime);
+
+            //transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
              Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
             
 
