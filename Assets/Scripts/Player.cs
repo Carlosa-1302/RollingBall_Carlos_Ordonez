@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     private CharacterController controller;
     private Animator animator;
-
+    private bool estaSaltando;
     //Me sirve tanto para la gravedada como para los saltos
     private Vector3 movimientoVertical;
 
@@ -46,12 +46,13 @@ public class Player : MonoBehaviour
         AplicarGravedad();
         if (EnSuelo())
         {
-            animator.SetBool("landing",false);
-            animator.SetBool("jumping",false );
+            
+            
+            
             movimientoVertical.y = 0;
             Saltar();
-
         }
+        
     }
     void MoverYRotar()
     {
@@ -112,8 +113,14 @@ public class Player : MonoBehaviour
     private bool EnSuelo()
     {
         bool resultado = Physics.CheckSphere(pies.position, radioDeteccion, queEsSuelo);
-        animator.SetBool("landing",true);
-         
+        if(resultado && estaSaltando) 
+        {
+            estaSaltando = false;
+            animator.SetBool("jumping", false);
+            animator.SetTrigger("land");
+        }
+        
+        
         return resultado;
     }
     private void OnDrawGizmos()
@@ -126,7 +133,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             movimientoVertical.y = Mathf.Sqrt(-2 * factorGravedad * alturaSalto);
+            estaSaltando=true;
             animator.SetBool("jumping", true);
+            animator.SetTrigger("jump");
         }
     }
 
