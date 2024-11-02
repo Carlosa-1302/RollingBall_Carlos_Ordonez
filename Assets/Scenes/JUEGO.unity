@@ -4034,12 +4034,14 @@ MonoBehaviour:
   velocidadCorrer: 20
   alturaSalto: 2
   factorGravedad: -9.81
+  fuerzaSalto: 2
   radioDeteccion: 0.72
   pies: {fileID: 934993515}
   queEsSuelo:
     serializedVersion: 2
     m_Bits: 8
-  fuerzaSalto: 2
+  velocidadEsquive: 15
+  duracionEsquive: 0.7
 --- !u!4 &2057381529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5897604298668739436, guid: 1be2c87a457f9e044a0d468f0d07147c,

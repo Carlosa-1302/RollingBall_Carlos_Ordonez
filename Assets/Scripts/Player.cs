@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float velocidadCorrer;
     [SerializeField] private float alturaSalto;
     [SerializeField] private float factorGravedad;
+    [SerializeField] private float fuerzaSalto;
 
 
 
@@ -22,12 +23,22 @@ public class Player : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
     private bool estaSaltando;
+    private bool estaCayendo;
+
+
+    [Header("Esquivar")]
+    [SerializeField] private float velocidadEsquive;
+    [SerializeField] private float duracionEsquive;
+    private float velocidadOriginal;
+    private bool estaEsquivando = false;
+
+    Vector3 direccionFrontal;
+    Vector3 direccionEsquive;
     //Me sirve tanto para la gravedada como para los saltos
     private Vector3 movimientoVertical;
 
 
 
-    [SerializeField] private float fuerzaSalto;
 
 
     // Start is called before the first frame update
@@ -46,12 +57,10 @@ public class Player : MonoBehaviour
         AplicarGravedad();
         if (EnSuelo())
         {
-            
-            
-            
             movimientoVertical.y = 0;
             Saltar();
         }
+        Dodge();
         
     }
     void MoverYRotar()
@@ -66,9 +75,15 @@ public class Player : MonoBehaviour
         //transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
 
 
-
-        if (input.magnitude > 0)
+        if (estaEsquivando)
         {
+            controller.Move(direccionEsquive * Time.deltaTime);
+        }
+        else if (input.magnitude > 0)
+        {
+         
+
+
             float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
             Quaternion rotacionSuave = Quaternion.Euler(0,anguloRotacion, 0);
@@ -100,7 +115,7 @@ public class Player : MonoBehaviour
             animator.SetBool("walking", false);
             animator.SetBool("running", false);
         }
-
+        
     }
 
     private void AplicarGravedad()
@@ -138,7 +153,24 @@ public class Player : MonoBehaviour
             animator.SetTrigger("jump");
         }
     }
+    public void Dodge()
+    {
+        
+      if(Input.GetKeyDown(KeyCode.Q) && !estaEsquivando)
+      {
+            direccionEsquive = transform.forward * velocidadEsquive;
+            estaEsquivando=true;
+            animator.SetTrigger("dodge");
 
+            Invoke(nameof(FinalizarEsquive), duracionEsquive);
+            
+      }
+    }
 
+    private void FinalizarEsquive()
+    {
+        //velocidadMovimiento = velocidadOriginal;
+        estaEsquivando = false;
+    }
 
 }
