@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimacionMoneda : MonoBehaviour
 {
+    [SerializeField] private float velocidadRotacion;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class AnimacionMoneda : MonoBehaviour
     {
         //transform.Rotate(0,0,0 * 35 * Time.deltaTime,Space.World);//el space.world es para que use x,y,z del mundo no del objeto
         
-        transform.Rotate (new Vector3(0,1,0) * 10 * Time.deltaTime,Space.World);
+        transform.Rotate (new Vector3(0,1,0) * velocidadRotacion * Time.deltaTime,Space.World);
     }
     
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float alturaSalto;
     [SerializeField] private float factorGravedad;
     [SerializeField] private float fuerzaSalto;
+    private Vector3 movimientoVertical;
 
 
 
@@ -35,7 +37,11 @@ public class Player : MonoBehaviour
     Vector3 direccionFrontal;
     Vector3 direccionEsquive;
     //Me sirve tanto para la gravedada como para los saltos
-    private Vector3 movimientoVertical;
+
+
+    [Header("TextoUI")]
+    [SerializeField] TMP_Text TextoMonedas;
+    private int monedas;
 
 
 
@@ -171,6 +177,16 @@ public class Player : MonoBehaviour
     {
         //velocidadMovimiento = velocidadOriginal;
         estaEsquivando = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Moneda"))
+        {
+            monedas++;
+            TextoMonedas.SetText("Monedas: " + monedas);
+            Destroy(other.gameObject);
+        }
     }
 
 }
