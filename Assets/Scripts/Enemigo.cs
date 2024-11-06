@@ -80,6 +80,6 @@ public class Enemigo : MonoBehaviour
     }
     private void CerrarVentanaAtaque()
     {
-        ventanaAbierta = false ;
+        ventanaAbierta = false ;//asdasdasd
     }
 }
