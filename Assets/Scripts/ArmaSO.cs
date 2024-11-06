@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Arma")]
 public class ArmaSO : ScriptableObject
 {
+    
     //DATOS
     public int balasCarador;
     public int balasBolsas;
