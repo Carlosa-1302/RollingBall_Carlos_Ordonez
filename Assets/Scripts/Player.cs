@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class Player : MonoBehaviour
 {
@@ -187,6 +188,10 @@ public class Player : MonoBehaviour
             TextoMonedas.SetText("Monedas: " + monedas);
             Destroy(other.gameObject);
         }
+    }
+    public void RecibirDanho(float danhoEnemigo)
+    {
+      //da -= danhoEnemigo
     }
 
 }
