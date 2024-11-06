@@ -27,13 +27,17 @@ public class Enemigo : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindAnyObjectByType<Player>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Perseguir();
+        if(ventanaAbierta && puedoDanhar )
+        {
+            DetectarImpacto();
+        }
     }
 
 
@@ -42,6 +46,15 @@ public class Enemigo : MonoBehaviour
     private void DetectarImpacto()
     {
         Collider[] collsDetectados = Physics.OverlapSphere(attackPoint.position,radioAtaque,queEsdanhable);
+
+        if(collsDetectados.Length > 0 )
+        {
+            for(int i = 0; i < collsDetectados.Length; i++)
+            {
+                collsDetectados[i].GetComponent<Player>().RecibirDanho(danhoEnemigo);
+            }
+            puedoDanhar=true;
+        }
     }
     private void Perseguir()
     {

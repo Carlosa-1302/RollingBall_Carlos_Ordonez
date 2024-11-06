@@ -6,6 +6,8 @@ using UnityEngine.Video;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float vidas;
+
     [Header("Movimiento")]
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float velocidadCorrer;
@@ -191,7 +193,7 @@ public class Player : MonoBehaviour
     }
     public void RecibirDanho(float danhoEnemigo)
     {
-      //da -= danhoEnemigo
+      vidas -= danhoEnemigo;
     }
 
 }
