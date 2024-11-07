@@ -6,7 +6,8 @@ using UnityEngine.Video;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float vidas;
+    [Header("Vida")]
+    [SerializeField] private int vidas;
 
     [Header("Movimiento")]
     [SerializeField] private float velocidadMovimiento;
@@ -44,14 +45,17 @@ public class Player : MonoBehaviour
 
     [Header("TextoUI")]
     [SerializeField] TMP_Text TextoMonedas;
-    private int monedas;
+    [SerializeField]private int monedas;
 
     [Header("Armas")]
+    [SerializeField] private int ammo;
     [SerializeField] private GameObject[] Armas;
     [SerializeField] private bool[] tieneArma;
     private GameObject equiparArma;
     private bool estaCambiandoArma;
+    int ArmaNº = -1;
 
+    public int ArmaNº1 { get => ArmaNº; set => ArmaNº = value; }
 
 
 
@@ -212,35 +216,35 @@ public class Player : MonoBehaviour
     }
     public void RecibirDanho(float danhoEnemigo)
     {
-      vidas -= danhoEnemigo;
+      //vidas -= danhoEnemigo;
     }
     public void CambiarArma()
     {
-        int ArmaNº = -1;
+        if (estaCambiandoArma) return;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ArmaNº = 0;
+            ArmaNº1 = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ArmaNº = 1;
+            ArmaNº1 = 1;
         }
         else if ((Input.GetKeyDown(KeyCode.Alpha3)))
         {
-            ArmaNº = 2;
+            ArmaNº1 = 2;
         }
-        if(ArmaNº >= 0 && ArmaNº < Armas.Length && tieneArma[ArmaNº])
+        if(ArmaNº1 >= 0 && ArmaNº1 < Armas.Length && tieneArma[ArmaNº1])
         {
             if(equiparArma != null)
             {
-                Armas[ArmaNº].SetActive(false);
+                Armas[ArmaNº1].SetActive(false);
                 equiparArma.SetActive(false);
 
             }
             
-            equiparArma = Armas[ArmaNº];
-            Armas[ArmaNº].SetActive(true);
+            equiparArma = Armas[ArmaNº1];
+            Armas[ArmaNº1].SetActive(true);
 
 
             animator.SetTrigger("swap");

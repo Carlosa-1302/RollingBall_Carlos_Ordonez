@@ -8,6 +8,8 @@ TagManager:
   - Vacio
   - Moneda
   - Arma
+  - Wall
+  - Floor
   layers:
   - Default
   - TransparentFX

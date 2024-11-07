@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balasCarador: 0
   balasBolsas: 0
-  cadenciaAtaque: 0
-  distanciaAtaque: 0
-  danhoAtaque: 0
+  cadenciaAtaque: 1.5
+  distanciaAtaque: 2
+  danhoAtaque: 50

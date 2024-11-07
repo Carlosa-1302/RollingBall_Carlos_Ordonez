@@ -4,7 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Arma")]
 public class ArmaSO : ScriptableObject
 {
-    
+    public enum TipoArma { Melee,Distancia}
+
+    public TipoArma tipo;
     //DATOS
     public int balasCarador;
     public int balasBolsas;
