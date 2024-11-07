@@ -220,36 +220,29 @@ public class Player : MonoBehaviour
     }
     public void CambiarArma()
     {
-        if (estaCambiandoArma) return;
-
+        int ArmaNº = -1;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ArmaNº1 = 0;
+            ArmaNº = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ArmaNº1 = 1;
+            ArmaNº = 1;
         }
         else if ((Input.GetKeyDown(KeyCode.Alpha3)))
         {
-            ArmaNº1 = 2;
+            ArmaNº = 2;
         }
-        if(ArmaNº1 >= 0 && ArmaNº1 < Armas.Length && tieneArma[ArmaNº1])
+        if (ArmaNº >= 0 && ArmaNº < Armas.Length && tieneArma[ArmaNº])
         {
-            if(equiparArma != null)
+            if (equiparArma != null)
             {
-                Armas[ArmaNº1].SetActive(false);
+                Armas[ArmaNº].SetActive(false);
                 equiparArma.SetActive(false);
-
             }
-            
-            equiparArma = Armas[ArmaNº1];
-            Armas[ArmaNº1].SetActive(true);
 
-
-            animator.SetTrigger("swap");
-            estaCambiandoArma = true;
-            Invoke("TerminarCambiarArma",1);
+            equiparArma = Armas[ArmaNº];
+            Armas[ArmaNº].SetActive(true);
         }
     }
     private void TerminarCambiarArma()
