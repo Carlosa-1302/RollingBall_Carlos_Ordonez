@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] Armas;
     [SerializeField] private bool[] tieneArma;
     private GameObject equiparArma;
+    private bool estaCambiandoArma;
 
 
 
@@ -169,13 +170,14 @@ public class Player : MonoBehaviour
     public void Dodge()
     {
         
-      if(Input.GetKeyDown(KeyCode.Q) && !estaEsquivando)
+      if(Input.GetKeyDown(KeyCode.Q) && !estaEsquivando && !estaCambiandoArma)
       {
             direccionEsquive = transform.forward * velocidadEsquive;
             estaEsquivando=true;
             animator.SetTrigger("dodge");
 
             Invoke(nameof(FinalizarEsquive), duracionEsquive);
+            
             
       }
     }
@@ -239,7 +241,16 @@ public class Player : MonoBehaviour
             
             equiparArma = Armas[ArmaNº];
             Armas[ArmaNº].SetActive(true);
+
+
+            animator.SetTrigger("swap");
+            estaCambiandoArma = true;
+            Invoke("TerminarCambiarArma", 0.4f);
         }
+    }
+    private void TerminarCambiarArma()
+    {
+        estaCambiandoArma = false;
     }
 
 }
