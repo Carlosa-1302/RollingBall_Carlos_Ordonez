@@ -46,6 +46,9 @@ public class Player : MonoBehaviour
     [SerializeField] TMP_Text TextoMonedas;
     private int monedas;
 
+    [Header("Armas")]
+    [SerializeField] private GameObject[] Armas;
+    [SerializeField] bool[] tieneArma;
 
 
 
@@ -190,6 +193,19 @@ public class Player : MonoBehaviour
             TextoMonedas.SetText("Monedas: " + monedas);
             Destroy(other.gameObject);
         }
+
+        if(other.gameObject.CompareTag("Arma"))
+        {
+            Items item = other.GetComponent<Items>();
+
+
+            int weaponIndex = item.Valor;
+            tieneArma[weaponIndex] = true;
+
+
+            Destroy(other.gameObject);
+        }
+        
     }
     public void RecibirDanho(float danhoEnemigo)
     {

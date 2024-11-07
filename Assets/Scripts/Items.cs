@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimacionMoneda : MonoBehaviour
+public class Items : MonoBehaviour
 {
+    [Header("Velocidad Rotación")]
     [SerializeField] private float velocidadRotacion;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //sadasd
+
+    //[Header("Tipo Items")]
+    [SerializeField] private enum Type { Ammo, Moneda, Arma, Vida }
+    [SerializeField] private Type tipo;
+    [SerializeField] private int valor;
+
+    public int Valor { get => valor; set => valor = value; }
 
     // Update is called once per frame
     void Update()
