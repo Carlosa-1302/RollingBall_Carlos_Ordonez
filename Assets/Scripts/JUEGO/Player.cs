@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] Armas;
     [SerializeField] private bool[] tieneArma;
     private GameObject equiparArma;
-    private bool estaCambiandoArma;
+     bool estaCambiandoArma;
     int ArmaNº = -1;
 
     public int ArmaNº1 { get => ArmaNº; set => ArmaNº = value; }
@@ -249,12 +249,13 @@ public class Player : MonoBehaviour
 
             animator.SetTrigger("swap");
             estaCambiandoArma = true;
-            Invoke("TerminarCambiarArma", 0.4f);
+            Invoke("TerminarCambiarArma",1);
         }
     }
     private void TerminarCambiarArma()
     {
-        estaCambiandoArma = false;
+        estaCambiandoArma = false; 
     }
+
 
 }

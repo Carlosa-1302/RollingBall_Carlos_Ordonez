@@ -29,23 +29,31 @@ public class ArmaManual : MonoBehaviour
     void Start()
     {
         cam = Camera.main; //"MainCamera".
-        anim = GetComponent<Animator>();
-        player = GetComponent<Player>();
+        player = GetComponentInParent<Player>();
+        if (player != null)
+        {
+            anim = player.GetComponentInChildren<Animator>();
+        }
+            player = GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)  )
         {
-            if(misDatos.tipo == ArmaSO.TipoArma.Melee)
+            if (misDatos != null)
             {
-                GolpearMelee();
+                if (misDatos.tipo == ArmaSO.TipoArma.Melee)
+                {
+                    GolpearMelee();
+                }
+                else if (misDatos.tipo == ArmaSO.TipoArma.Distancia)
+                {
+                    DispararDistancia();
+                }
             }
-            else if ( misDatos.tipo == ArmaSO.TipoArma.Distancia)
-            {
-                DispararDistancia();
-            }
+            
 
         }
     }
@@ -65,16 +73,18 @@ public class ArmaManual : MonoBehaviour
     }
     private void DispararDistancia()
     {
-        if(misDatos.balasCarador > 0)
+        if (misDatos.balasCarador > 0)
         {
-            anim.SetTrigger("shot");
-            ParticleSystem.Play();
+            anim.SetTrigger("shot"); 
+            ParticleSystem.Play();    
+
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
             {
-                Debug.Log(hitInfo.transform.name);//muestro el nombre de a quien he impactado
+                Debug.Log(hitInfo.transform.name); 
             }
-            anim.SetTrigger("shot");
+
+            misDatos.balasCarador--; 
         }
-        
     }
+
 }
