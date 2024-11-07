@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6834489285192166374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7107255905445635317}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,12 +75,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7523034761548307415}
   - component: {fileID: 7733307725658668414}
-  - component: {fileID: 513387073429182405}
-  - component: {fileID: 4214679446003779164}
   - component: {fileID: 5585364391186640152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy A
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2172665297695221437}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -113,60 +111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131187f3869974f4781e9601cec952b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VidaEnemigo: 100
   danhoEnemigo: 25
   attackPoint: {fileID: 0}
   radioAtaque: 0.5
   queEsdanhable:
     serializedVersion: 2
     m_Bits: 64
---- !u!54 &513387073429182405
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2172665297695221437}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &4214679446003779164
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2172665297695221437}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.5, y: 2.4, z: 3.03}
-  m_Center: {x: 0, y: 0.69, z: 0}
 --- !u!195 &5585364391186640152
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -176,17 +127,17 @@ NavMeshAgent:
   m_GameObject: {fileID: 2172665297695221437}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.69
   m_Speed: 4
   m_Acceleration: Infinity
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.6
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &2939188709577249700
@@ -198,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8013218045515788951}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_Foot_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1412917042685497020}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +214,7 @@ GameObject:
   - component: {fileID: 6979670496095154320}
   - component: {fileID: 3121192429285106420}
   - component: {fileID: 4746205985112282025}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328027782605333236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_Body_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4975040203265658848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_Foot_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +359,7 @@ GameObject:
   - component: {fileID: 2294705875337395795}
   - component: {fileID: 8666957549425350518}
   - component: {fileID: 2058469905497951390}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9013215541813332316}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_Foot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6621650151370677972}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone_Foot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +508,7 @@ GameObject:
   - component: {fileID: 6567026951984676979}
   - component: {fileID: 2467852405805633650}
   - component: {fileID: 6624044680008115100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1904308453651688266}
   - component: {fileID: 4079438571887387645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

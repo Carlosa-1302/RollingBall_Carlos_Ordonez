@@ -8,7 +8,7 @@ public class ArmaSO : ScriptableObject
 
     public TipoArma tipo;
     //DATOS
-    public int balasCarador;
+    public int balasCargador;
     public int balasBolsas;
     public float cadenciaAtaque;//1.5s puedes atacar
     public float distanciaAtaque;

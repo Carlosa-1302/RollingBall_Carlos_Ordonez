@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class Enemigo : MonoBehaviour
 {
+    private ArmaSO misDatos;
     [Header("Sistema de Combate")]
+    [SerializeField] private float VidaEnemigo;
     [SerializeField] private float danhoEnemigo;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radioAtaque;
@@ -18,16 +20,22 @@ public class Enemigo : MonoBehaviour
     private Player player;
     private bool ventanaAbierta;
     private bool puedoDanhar = true;
+
+
+
     //El enemigo tiene que persguir al Player
 
-
+    Rigidbody[] huesos;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>(); 
         player = GameObject.FindAnyObjectByType<Player>();
-        anim = GetComponentInChildren<Animator>();
+
+        huesos = GetComponentsInChildren<Rigidbody>(); //getComponentS cuidado con la S
+        CambiarEstadoHuesos(true);
     }
 
     // Update is called once per frame
@@ -40,7 +48,7 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-
+    
 
 
     private void DetectarImpacto()
@@ -51,7 +59,7 @@ public class Enemigo : MonoBehaviour
         {
             for(int i = 0; i < collsDetectados.Length; i++)
             {
-                collsDetectados[i].GetComponent<Player>().RecibirDanho(danhoEnemigo);
+                collsDetectados[i].GetComponent<Player>().RecibirDanho( danhoEnemigo);
             }
             puedoDanhar=true;
         }
@@ -86,5 +94,20 @@ public class Enemigo : MonoBehaviour
     private void CerrarVentanaAtaque()
     {
         ventanaAbierta = false ;//asdasdasd
+    }
+    public void RecibirDanho(float danhoRecibido)
+    {
+        VidaEnemigo -= danhoRecibido;
+        if(VidaEnemigo <= 0 )
+        {
+            CambiarEstadoHuesos(false);
+        }
+    }
+    private void CambiarEstadoHuesos(bool estado)
+    {
+        for (int i = 0; i < huesos.Length; i++)
+        {
+            huesos[i].isKinematic = estado;
+        }
     }
 }
