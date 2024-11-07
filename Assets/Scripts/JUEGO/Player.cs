@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] Armas;
     [SerializeField] private bool[] tieneArma;
     private GameObject equiparArma;
-     bool estaCambiandoArma;
+     bool estaCambiandoArma = false;
     int ArmaNº = -1;
 
     public int ArmaNº1 { get => ArmaNº; set => ArmaNº = value; }
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        animator = transform.Find("Mesh Object").GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;// bloquea el raton en centro de la pantalla y lo oculta
 
     }
@@ -174,7 +174,7 @@ public class Player : MonoBehaviour
     public void Dodge()
     {
         
-      if(Input.GetKeyDown(KeyCode.Q) && !estaEsquivando && !estaCambiandoArma)
+      if(Input.GetKeyDown(KeyCode.Q) && !estaEsquivando )
       {
             direccionEsquive = transform.forward * velocidadEsquive;
             estaEsquivando=true;
@@ -220,6 +220,10 @@ public class Player : MonoBehaviour
     }
     public void CambiarArma()
     {
+
+        
+
+
         int ArmaNº = -1;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -243,6 +247,11 @@ public class Player : MonoBehaviour
 
             equiparArma = Armas[ArmaNº];
             Armas[ArmaNº].SetActive(true);
+
+            animator.SetTrigger("swap");
+            estaCambiandoArma = true;
+
+            Invoke("TerminarCambiarArma", 0.4f);
         }
     }
     private void TerminarCambiarArma()
