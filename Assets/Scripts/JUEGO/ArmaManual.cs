@@ -82,7 +82,6 @@ public class ArmaManual : MonoBehaviour
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
             {
-                Debug.Log(hitInfo.transform.name);  //Muestra el nombre de a quien he impactado
                 //1.Generea un metodo RecibirDanho(Float) en el script Enemigo
                 //2. Desde este punto, ponte en comunicacion con el enemigo impactado para ejecutar su metodo "RecibirDanho"
                 //3. Para ello, Necesitaras un daño: vien en el ScriptableObject
@@ -92,6 +91,7 @@ public class ArmaManual : MonoBehaviour
                 {
                     hitInfo.transform.GetComponent<Enemigo>().RecibirDanho(misDatos.danhoAtaque);
                 }
+                Debug.Log(hitInfo.transform.name);  //Muestra el nombre de a quien he impactado
                 
                 
                 
