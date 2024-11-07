@@ -21,21 +21,18 @@ public class Enemigo : MonoBehaviour
     private bool ventanaAbierta;
     private bool puedoDanhar = true;
 
-
+   
 
     //El enemigo tiene que persguir al Player
 
-    Rigidbody[] huesos;
+
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>(); 
         player = GameObject.FindAnyObjectByType<Player>();
-
-        huesos = GetComponentsInChildren<Rigidbody>(); //getComponentS cuidado con la S
-        CambiarEstadoHuesos(true);
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -48,7 +45,7 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    
+
 
 
     private void DetectarImpacto()
@@ -100,14 +97,7 @@ public class Enemigo : MonoBehaviour
         VidaEnemigo -= danhoRecibido;
         if(VidaEnemigo <= 0 )
         {
-            CambiarEstadoHuesos(false);
-        }
-    }
-    private void CambiarEstadoHuesos(bool estado)
-    {
-        for (int i = 0; i < huesos.Length; i++)
-        {
-            huesos[i].isKinematic = estado;
+            Destroy(gameObject);
         }
     }
 }
