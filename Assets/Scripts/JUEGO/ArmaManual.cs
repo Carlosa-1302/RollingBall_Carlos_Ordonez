@@ -25,11 +25,15 @@ public class ArmaManual : MonoBehaviour
 
     private Camera cam;
     private Player player;
+
+    private int municionActual;
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main; //"MainCamera".
         player = GetComponentInParent<Player>();
+        municionActual = misDatos.balasCargador;
+
         if (player != null)
         {
             anim = player.GetComponentInChildren<Animator>();
@@ -75,7 +79,7 @@ public class ArmaManual : MonoBehaviour
     }
     public void DispararDistancia()
     {
-        if (misDatos.balasCargador > 0)
+        if (municionActual > 0)
         {
             anim.SetTrigger("shot");
             ParticleSystem.Play();    
@@ -97,7 +101,7 @@ public class ArmaManual : MonoBehaviour
                 
             }
 
-            misDatos.balasCargador--; 
+            municionActual--; 
         }
         else
         {
