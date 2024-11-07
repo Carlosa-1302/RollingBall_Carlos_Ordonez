@@ -48,7 +48,8 @@ public class Player : MonoBehaviour
 
     [Header("Armas")]
     [SerializeField] private GameObject[] Armas;
-    [SerializeField] bool[] tieneArma;
+    [SerializeField] private bool[] tieneArma;
+    private GameObject equiparArma;
 
 
 
@@ -73,7 +74,7 @@ public class Player : MonoBehaviour
             Saltar();
         }
         Dodge();
-        
+        CambiarArma();
     }
     void MoverYRotar()
     {
@@ -199,8 +200,8 @@ public class Player : MonoBehaviour
             Items item = other.GetComponent<Items>();
 
 
-            int weaponIndex = item.Valor;
-            tieneArma[weaponIndex] = true;
+            int ArmaNº = item.Valor;
+            tieneArma[ArmaNº] = true;
 
 
             Destroy(other.gameObject);
@@ -210,6 +211,35 @@ public class Player : MonoBehaviour
     public void RecibirDanho(float danhoEnemigo)
     {
       vidas -= danhoEnemigo;
+    }
+    public void CambiarArma()
+    {
+        int ArmaNº = -1;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ArmaNº = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ArmaNº = 1;
+        }
+        else if ((Input.GetKeyDown(KeyCode.Alpha3)))
+        {
+            ArmaNº = 2;
+        }
+        if(ArmaNº >= 0 && ArmaNº < Armas.Length && tieneArma[ArmaNº])
+        {
+            if(equiparArma != null)
+            {
+                Armas[ArmaNº].SetActive(false);
+                equiparArma.SetActive(false);
+
+            }
+            
+            equiparArma = Armas[ArmaNº];
+            Armas[ArmaNº].SetActive(true);
+        }
     }
 
 }
