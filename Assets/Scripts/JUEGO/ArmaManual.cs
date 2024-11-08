@@ -13,33 +13,44 @@ public class ArmaManual : MonoBehaviour
     [SerializeField] private LayerMask queEsDanhable;//va a atravesar todo objeto a los que si sea dañable como un zombie detras del arbol, el arbol no es dañable pero el zombie si entonces pasa del arbol y daña al zombie aunque este detras
     [SerializeField] private ParticleSystem ParticleSystem;
 
+    [SerializeField] private Transform balaPos;
+    [SerializeField] private GameObject bala;
+
+    [SerializeField] private Transform balaCasePos;
+    [SerializeField] private GameObject balaCase;
+
+
+
+
     [Header("Melee")]
-    [SerializeField] TrailRenderer trailEffect;
-    [SerializeField] BoxCollider AreaMelee;
+    [SerializeField] private TrailRenderer trailEffect;
+    [SerializeField] private BoxCollider AreaMelee;
 
     private bool ventanaAbierta;
     private bool puedoDanhar = true;
+
+
+
     private Animator anim;
-
-
-
     private Camera cam;
     private Player player;
-
     private int municionActual;
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main; //"MainCamera".
         player = GetComponentInParent<Player>();
-        municionActual = misDatos.balasCargador;
+
+
 
         if (player != null)
         {
             anim = player.GetComponentInChildren<Animator>();
-            
+
         }
-            player = GetComponent<Player>();
+        municionActual = misDatos.balasCargador;
+            
     }
 
     // Update is called once per frame
@@ -66,23 +77,44 @@ public class ArmaManual : MonoBehaviour
 
     private void GolpearMelee()
     {
+        if (misDatos.tipo != ArmaSO.TipoArma.Melee) return;
+        if(trailEffect != null)
+        {
+          trailEffect.enabled = true;
+ 
+        }
+        if(AreaMelee != null)
+        {
+          AreaMelee.enabled = true;
+
+        }
         anim.SetTrigger("swing");
-        trailEffect.enabled = true;
-        AreaMelee.enabled = true;
         Invoke("DetenerGolpeMelee", 0.5f);
         
     }
     private void DetenerGolpeMelee()
     {
-        trailEffect.enabled = false;
-        AreaMelee.enabled = false;
+        if (trailEffect != null)
+        {
+            trailEffect.enabled = false;
+        }
+
+        if (AreaMelee != null)
+        {
+            AreaMelee.enabled = false;
+        }
     }
     public void DispararDistancia()
     {
+        if(misDatos.tipo != ArmaSO.TipoArma.Distancia) return;
         if (municionActual > 0)
         {
             anim.SetTrigger("shot");
-            ParticleSystem.Play();    
+            if(ParticleSystem != null)
+            {
+                ParticleSystem.Play();
+            }
+              
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
             {

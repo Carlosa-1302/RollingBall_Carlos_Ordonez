@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: GunData
   m_EditorClassIdentifier: Assembly-CSharp::ArmaSO
-  tipo: 0
+  tipo: 1
   balasCargador: 7
   balasBolsas: 40
-  cadenciaAtaque: 1.5
+  cadenciaAtaque: 0.5
   distanciaAtaque: 500
   danhoAtaque: 25
