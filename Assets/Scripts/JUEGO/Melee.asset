@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8667dba20dff24fbeb5388d41c85aa, type: 3}
   m_Name: Melee
   m_EditorClassIdentifier: 
-  balasCarador: 0
+  tipo: 0
+  balasCargador: 0
   balasBolsas: 0
   cadenciaAtaque: 1.5
-  distanciaAtaque: 2
+  distanciaAtaque: 3
   danhoAtaque: 50

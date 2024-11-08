@@ -5540,46 +5540,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy A
       objectReference: {fileID: 0}
-    - target: {fileID: 5429677543095217369, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: velocidadAtaque
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5429677543095217369, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: queEsdanhable.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6621650151370677972, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 6.8672647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6621650151370677972, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -89.99999
-      objectReference: {fileID: 0}
-    - target: {fileID: 6621650151370677972, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6834489285192166374, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 87.692245
-      objectReference: {fileID: 0}
-    - target: {fileID: 6834489285192166374, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -167.07823
-      objectReference: {fileID: 0}
-    - target: {fileID: 6834489285192166374, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -166.98352
-      objectReference: {fileID: 0}
     - target: {fileID: 7523034761548307415, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5629,21 +5589,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9013215541813332316, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 6.8672647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9013215541813332316, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 89.99999
-      objectReference: {fileID: 0}
-    - target: {fileID: 9013215541813332316, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6703,7 +6648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149460994}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.10411077, y: 0, z: 0, w: 0.9945657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6868,7 +6813,7 @@ Transform:
   m_GameObject: {fileID: 1248841534}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.68, y: 1.98, z: 2.46}
+  m_LocalPosition: {x: -41.28, y: 1.98, z: 2.8}
   m_LocalScale: {x: 5, y: 3, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7295,6 +7240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: queEsDanhable.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997492977355373325, guid: 8f5e135a19626f544908fc8f156144b9,
+        type: 3}
+      propertyPath: tiempoEsperaEntreGolpes
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7270561302000434863, guid: 8f5e135a19626f544908fc8f156144b9,
         type: 3}
@@ -12732,6 +12682,7 @@ MonoBehaviour:
   queEsdanhable:
     serializedVersion: 2
     m_Bits: 0
+  anim: {fileID: 0}
 --- !u!1 &1801682292
 GameObject:
   m_ObjectHideFlags: 0
@@ -18705,6 +18656,8 @@ MonoBehaviour:
   trailEffect: {fileID: 0}
   AreaMelee: {fileID: 0}
   weaponPoint: {fileID: 0}
+  tiempoEsperaEntreGolpes: 0
+  duracionGolpe: 0.5
 --- !u!1001 &73802805118712414
 PrefabInstance:
   m_ObjectHideFlags: 0

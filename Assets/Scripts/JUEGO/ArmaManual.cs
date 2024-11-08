@@ -27,7 +27,7 @@ public class ArmaManual : MonoBehaviour
     [SerializeField] private BoxCollider AreaMelee;
     [SerializeField] private GameObject weaponPoint;
     [SerializeField] private float tiempoEsperaEntreGolpes;
-    private bool puedeAplicarDanho = true;
+    private bool puedoDanharMelee = true;
     [SerializeField] private float duracionGolpe = 0.5f;
 
 
@@ -103,7 +103,7 @@ public class ArmaManual : MonoBehaviour
         }
 
         anim.SetTrigger("swing");
-        puedeAplicarDanho = true;
+        
         
         Invoke("DetenerGolpeMelee", duracionGolpe);
         
@@ -119,27 +119,27 @@ public class ArmaManual : MonoBehaviour
         {
             AreaMelee.enabled = false;
         }
-        puedeAplicarDanho = false;
+        puedoDanharMelee = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!puedeAplicarDanho) return;
+        if (!puedoDanharMelee || misDatos.tipo != ArmaSO.TipoArma.Melee) return;
 
         if (other.CompareTag("Enemigo"))
         {
-            Enemigo enemigo = other.GetComponentInChildren<Enemigo>();
+            Enemigo enemigo = other.GetComponentInParent<Enemigo>();
             if (enemigo != null)
             {
                 enemigo.RecibirDanho(misDatos.danhoAtaque);
-                puedeAplicarDanho = false;
+                puedoDanharMelee = false;
             }
         }
 
-
-
-
     }
+
+
+
     public void DispararDistancia()
     {
         if(misDatos.tipo != ArmaSO.TipoArma.Distancia) return;
