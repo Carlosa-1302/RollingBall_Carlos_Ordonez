@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5153931263226940253}
   m_Layer: 6
   m_Name: BulletHandGun
-  m_TagString: Untagged
+  m_TagString: Bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

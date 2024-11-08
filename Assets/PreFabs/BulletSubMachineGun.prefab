@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2019336106998214598}
   m_Layer: 6
   m_Name: BulletSubMachineGun
-  m_TagString: Untagged
+  m_TagString: Bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,4 +208,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def86c3b6cb2c3e46be0c52ad1629f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  danho: 7
+  misDatos: {fileID: 0}

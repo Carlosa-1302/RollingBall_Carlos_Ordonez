@@ -8,11 +8,11 @@ public class ArmaManual : MonoBehaviour
     [SerializeField] private int armaActual = -1;
     
 
-    [Header("Distancia")]
     [SerializeField] private ArmaSO misDatos;
     [SerializeField] private LayerMask queEsDanhable;//va a atravesar todo objeto a los que si sea dañable como un zombie detras del arbol, el arbol no es dañable pero el zombie si entonces pasa del arbol y daña al zombie aunque este detras
     [SerializeField] private ParticleSystem ParticleSystem;
 
+    [Header("Distancia")]
     [SerializeField] private Transform balaPos;
     [SerializeField] private GameObject bala;
 
@@ -25,9 +25,14 @@ public class ArmaManual : MonoBehaviour
     [Header("Melee")]
     [SerializeField] private TrailRenderer trailEffect;
     [SerializeField] private BoxCollider AreaMelee;
+    [SerializeField] private GameObject weaponPoint;
+    [SerializeField] private float tiempoEsperaEntreGolpes;
+    private bool puedeAplicarDanho = true;
+    [SerializeField] private float duracionGolpe = 0.5f;
+
 
     private bool ventanaAbierta;
-    private bool puedoDanhar = true;
+    
 
 
 
@@ -42,6 +47,12 @@ public class ArmaManual : MonoBehaviour
         cam = Camera.main; //"MainCamera".
         player = GetComponentInParent<Player>();
 
+        
+
+        if (AreaMelee != null)
+        {
+            AreaMelee.enabled = false;
+        }
 
 
         if (player != null)
@@ -78,6 +89,8 @@ public class ArmaManual : MonoBehaviour
     private void GolpearMelee()
     {
         if (misDatos.tipo != ArmaSO.TipoArma.Melee) return;
+
+
         if(trailEffect != null)
         {
           trailEffect.enabled = true;
@@ -88,8 +101,11 @@ public class ArmaManual : MonoBehaviour
           AreaMelee.enabled = true;
 
         }
+
         anim.SetTrigger("swing");
-        Invoke("DetenerGolpeMelee", 0.5f);
+        puedeAplicarDanho = true;
+        
+        Invoke("DetenerGolpeMelee", duracionGolpe);
         
     }
     private void DetenerGolpeMelee()
@@ -103,37 +119,66 @@ public class ArmaManual : MonoBehaviour
         {
             AreaMelee.enabled = false;
         }
+        puedeAplicarDanho = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!puedeAplicarDanho) return;
+
+        if (other.CompareTag("Enemigo"))
+        {
+            Enemigo enemigo = other.GetComponentInChildren<Enemigo>();
+            if (enemigo != null)
+            {
+                enemigo.RecibirDanho(misDatos.danhoAtaque);
+                puedeAplicarDanho = false;
+            }
+        }
+
+
+
+
     }
     public void DispararDistancia()
     {
         if(misDatos.tipo != ArmaSO.TipoArma.Distancia) return;
         if (municionActual > 0)
         {
+            GameObject BalaSpawn = Instantiate(bala, balaPos.position, balaPos.rotation);
+            Rigidbody balaRigid = BalaSpawn.GetComponent<Rigidbody>();
+            balaRigid.velocity = balaPos.forward * 50;
+
+            GameObject BalaCasquillo = Instantiate(balaCase, balaCasePos.position, balaCasePos.rotation);
+            Rigidbody balaCaseRigid = BalaCasquillo.GetComponent<Rigidbody>();
+            Vector3 casquilloVec = balaCasePos.forward * Random.Range(-3,-2) + Vector3.up * Random.Range(2,3);
+            balaCaseRigid.AddForce(casquilloVec,ForceMode.Impulse);
+            balaCaseRigid.AddTorque(Vector3.up * 10,ForceMode.Impulse);
+
+
+
             anim.SetTrigger("shot");
-            if(ParticleSystem != null)
+
+
+            if (ParticleSystem != null)
             {
                 ParticleSystem.Play();
             }
-              
 
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
+
+            if (Physics.Raycast(balaPos.position, balaPos.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
             {
-                //1.Generea un metodo RecibirDanho(Float) en el script Enemigo
-                //2. Desde este punto, ponte en comunicacion con el enemigo impactado para ejecutar su metodo "RecibirDanho"
-                //3. Para ello, Necesitaras un daño: vien en el ScriptableObject
-                //4. Completa el metodo "RecibirDanho(float)", para que el enemigo reciba daño (se le resta vidas), y si muere, Destroy 
+
                 //hitInfo.transform.GetComponent<Enemigo>().VidaEnemigo1-=misDatos.danhoAtaque; //encapsular no hace falta
-                if(hitInfo.transform.CompareTag("Enemigo"))
+                if (hitInfo.transform.CompareTag("Enemigo"))
                 {
-                    hitInfo.transform.GetComponent<Enemigo>().RecibirDanho(misDatos.danhoAtaque);
+                    hitInfo.transform.GetComponentInChildren<Enemigo>().RecibirDanho(misDatos.danhoAtaque);
                 }
                 Debug.Log(hitInfo.transform.name);  //Muestra el nombre de a quien he impactado
-                
-                
-                
-            }
 
-            municionActual--; 
+
+            }
+                municionActual--; 
         }
         else
         {

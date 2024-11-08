@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c8667dba20dff24fbeb5388d41c85aa, type: 3}
-  m_Name: ChusterData
-  m_EditorClassIdentifier: Assembly-CSharp::ArmaSO
+  m_Name: SubMachine
+  m_EditorClassIdentifier: 
   tipo: 1
-  balasCargador: 0
-  balasBolsas: 0
-  cadenciaAtaque: 0
-  distanciaAtaque: 0
-  danhoAtaque: 0
+  balasCargador: 40
+  balasBolsas: 200
+  cadenciaAtaque: 0.2
+  distanciaAtaque: 200
+  danhoAtaque: 15

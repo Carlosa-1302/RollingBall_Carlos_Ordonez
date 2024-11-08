@@ -14,14 +14,18 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private LayerMask queEsdanhable;
 
     private NavMeshAgent agent;
-    private Animator anim;
+    public Animator anim;
+
 
 
     private Player player;
     private bool ventanaAbierta;
     private bool puedoDanhar = true;
+    private bool estaMueriendo  = false;
 
-   
+
+
+
 
     //El enemigo tiene que persguir al Player
 
@@ -30,16 +34,18 @@ public class Enemigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
         player = GameObject.FindAnyObjectByType<Player>();
         anim = GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!estaMueriendo)
         Perseguir();
-        if(ventanaAbierta && puedoDanhar )
+        if (ventanaAbierta && puedoDanhar)
         {
             DetectarImpacto();
         }
@@ -50,15 +56,26 @@ public class Enemigo : MonoBehaviour
 
     private void DetectarImpacto()
     {
-        Collider[] collsDetectados = Physics.OverlapSphere(attackPoint.position,radioAtaque,queEsdanhable);
+        if (!puedoDanhar) return;
 
-        if(collsDetectados.Length > 0 )
+        Collider[] collsDetectados = Physics.OverlapSphere(attackPoint.position, radioAtaque, queEsdanhable);
+
+        if (collsDetectados.Length > 0)
         {
-            for(int i = 0; i < collsDetectados.Length; i++)
+            if (!puedoDanhar) return;
+            for (int i = 0; i < collsDetectados.Length; i++)
             {
-                collsDetectados[i].GetComponent<Player>().RecibirDanho( danhoEnemigo);
+                Player player = collsDetectados[i].GetComponent<Player>();
+                if (player != null)
+                {
+                    player.RecibirDanho(danhoEnemigo);
+                    puedoDanhar = false;
+                    break;
+                }
+
+                //collsDetectados[i].GetComponent<Player>().RecibirDanho(danhoEnemigo);
             }
-            puedoDanhar=true;
+            //puedoDanhar = false;
         }
     }
     private void Perseguir()
@@ -77,27 +94,38 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    private void FinAtaque()
+    public void FinAtaque()
     {
         agent.isStopped = false;
-        anim.SetBool("attacking",false);
-        puedoDanhar = true ;
+        anim.SetBool("attacking", false);
+        puedoDanhar = true;
 
     }
-    private void AbrirVentanaAtaque()
+    public void AbrirVentanaAtaque()
     {
-        ventanaAbierta = true ;
+        ventanaAbierta = true;
     }
-    private void CerrarVentanaAtaque()
+    public void CerrarVentanaAtaque()
     {
-        ventanaAbierta = false ;//asdasdasd
+        ventanaAbierta = false;//asdasdasd
     }
     public void RecibirDanho(float danhoRecibido)
     {
+        
+        Debug.Log("Daño recibido: " + danhoRecibido + ", Vida restante: " + VidaEnemigo);
         VidaEnemigo -= danhoRecibido;
-        if(VidaEnemigo <= 0 )
+        if (VidaEnemigo <= 0)
         {
-            Destroy(gameObject);
+            estaMueriendo = true;
+            anim.SetBool("dying", true);
+            agent.isStopped= true;
+            Invoke(nameof(DestruirEnemigo), 2f);
         }
+       
+    }
+    private void DestruirEnemigo()
+    {
+        Destroy(gameObject);
     }
 }
+
