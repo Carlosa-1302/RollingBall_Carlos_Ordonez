@@ -5540,6 +5540,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy A
       objectReference: {fileID: 0}
+    - target: {fileID: 5585364391186640152, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585364391186640152, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390666986276231169, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
+        type: 3}
+      propertyPath: VidaEnemigo
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7523034761548307415, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5593,7 +5608,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2172665297695221437, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1056902537}
   m_SourcePrefab: {fileID: 100100000, guid: 4fcb9ce4bbc99e240b2e7295010b4dce, type: 3}
 --- !u!1 &628784295 stripped
 GameObject:
@@ -6571,6 +6590,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1056902532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2172665297695221437, guid: 4fcb9ce4bbc99e240b2e7295010b4dce,
+    type: 3}
+  m_PrefabInstance: {fileID: 606856575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1056902537
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056902532}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1100722083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2668960831232066980, guid: 8f5e135a19626f544908fc8f156144b9,
@@ -6648,7 +6694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149460994}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.10411077, y: 0, z: 0, w: 0.9945657}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7236,6 +7282,11 @@ PrefabInstance:
       propertyPath: weaponPoint
       value: 
       objectReference: {fileID: 1100722083}
+    - target: {fileID: 6997492977355373325, guid: 8f5e135a19626f544908fc8f156144b9,
+        type: 3}
+      propertyPath: ParticleSystem
+      value: 
+      objectReference: {fileID: 1179021881}
     - target: {fileID: 6997492977355373325, guid: 8f5e135a19626f544908fc8f156144b9,
         type: 3}
       propertyPath: queEsDanhable.m_Bits
@@ -12860,8 +12911,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Monedas
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6af7449e112f9984db494eb824a4cbf6, type: 2}
+  m_sharedMaterial: {fileID: 1087346597782948880, guid: 6af7449e112f9984db494eb824a4cbf6,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

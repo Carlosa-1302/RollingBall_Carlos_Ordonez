@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 public class Player : MonoBehaviour
@@ -46,6 +47,9 @@ public class Player : MonoBehaviour
     [Header("TextoUI")]
     [SerializeField] TMP_Text TextoMonedas;
     [SerializeField]private int monedas;
+    [SerializeField] private GameObject pantallaMuerte;
+    [SerializeField] private TextMeshPro mensajeMuerto;
+    private bool estaMuerto = false;
 
     [Header("Armas")]
     [SerializeField] private int ammo;
@@ -65,6 +69,7 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = transform.Find("Mesh Object").GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;// bloquea el raton en centro de la pantalla y lo oculta
+        
 
     }
 
@@ -80,6 +85,11 @@ public class Player : MonoBehaviour
         }
         Dodge();
         CambiarArma();
+
+        if(estaMuerto && Input.GetKeyDown (KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
     void MoverYRotar()
     {
@@ -217,6 +227,10 @@ public class Player : MonoBehaviour
     public void RecibirDanho(float danhoEnemigo)
     {
       vidas -= danhoEnemigo;
+        if (vidas <= 0)
+        {
+            Muerte();
+        }
     }
     public void CambiarArma()
     {
@@ -258,6 +272,21 @@ public class Player : MonoBehaviour
     {
         estaCambiandoArma = false; 
     }
+    private void Muerte()
+    {
+        estaMuerto = true;
+        animator.SetBool("died", true);  
 
+        
+        Invoke("ShowDeathScreen", 1f);
+    }
+    private void MostrarPantallaMuerte()
+    {
+        if(pantallaMuerte != null)
+        {
+            pantallaMuerte.SetActive(true);
+            
+        }
+    }
 
 }
