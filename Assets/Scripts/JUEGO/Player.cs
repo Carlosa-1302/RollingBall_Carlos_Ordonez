@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject pantallaMuerte;
     [SerializeField] private TextMeshPro mensajeMuerto;
     private bool estaMuerto = false;
+    private bool estaVivo = true;
 
     [Header("Armas")]
     [SerializeField] private int ammo;
@@ -76,15 +77,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoverYRotar();
-        AplicarGravedad();
-        if (EnSuelo())
+        if (estaVivo)
         {
-            movimientoVertical.y = 0;
-            Saltar();
+            MoverYRotar();
+            AplicarGravedad();
+            if (EnSuelo())
+            {
+                movimientoVertical.y = 0;
+                Saltar();
+            }
+            Dodge();
+            CambiarArma();
         }
-        Dodge();
-        CambiarArma();
+        
 
         if(estaMuerto && Input.GetKeyDown (KeyCode.R))
         {
@@ -274,11 +279,12 @@ public class Player : MonoBehaviour
     }
     private void Muerte()
     {
+        estaVivo = false;
         estaMuerto = true;
-        animator.SetBool("died", true);  
+        animator.SetTrigger("die");  
 
         
-        Invoke("ShowDeathScreen", 1f);
+        Invoke("MostrarPantallaMuerte", 1f);
     }
     private void MostrarPantallaMuerte()
     {
