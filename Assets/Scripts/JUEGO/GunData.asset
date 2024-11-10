@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GunData
   m_EditorClassIdentifier: Assembly-CSharp::ArmaSO
   tipo: 1
-  balasCargador: 7
+  balasCargador: 10000000
   balasBolsas: 40
   cadenciaAtaque: 0.5
   distanciaAtaque: 500

@@ -12,6 +12,7 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radioAtaque;
     [SerializeField] private LayerMask queEsdanhable;
+    [SerializeField] private float distanciaDeteccion;
 
     private NavMeshAgent agent;
     public Animator anim;
@@ -80,18 +81,28 @@ public class Enemigo : MonoBehaviour
     }
     private void Perseguir()
     {
-        agent.SetDestination(player.gameObject.transform.position);
-
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        float distanciaAlJugador = Vector3.Distance(transform.position,player.transform.position);
+        if(distanciaAlJugador <= distanciaDeteccion)
         {
-            agent.isStopped = true;
-            anim.SetBool("attacking", true);
+            agent.SetDestination(player.gameObject.transform.position);
+
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                agent.isStopped = true;
+                anim.SetBool("attacking", true);
+            }
+            else
+            {
+                agent.isStopped = false;
+                anim.SetBool("attacking", false);
+            }
         }
         else
         {
-            agent.isStopped = false;
-            anim.SetBool("attacking", false);
+            agent.isStopped = true;
+            anim.SetBool("attacking" , false);
         }
+        
     }
 
     public void FinAtaque()

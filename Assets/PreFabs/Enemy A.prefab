@@ -119,6 +119,7 @@ MonoBehaviour:
   queEsdanhable:
     serializedVersion: 2
     m_Bits: 64
+  distanciaDeteccion: 23
   anim: {fileID: 4079438571887387645}
 --- !u!195 &5585364391186640152
 NavMeshAgent:
@@ -129,7 +130,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2172665297695221437}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.69
+  m_Radius: 2.72
   m_Speed: 5
   m_Acceleration: Infinity
   avoidancePriority: 50
