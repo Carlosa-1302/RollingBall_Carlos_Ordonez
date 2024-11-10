@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
 
     [Header("TextoUI")]
     [SerializeField] TMP_Text TextoMonedas;
+    [SerializeField] TMP_Text TextoVidas;
     [SerializeField]private int monedas;
     [SerializeField] private GameObject pantallaMuerte;
     [SerializeField] private TextMeshPro mensajeMuerto;
@@ -70,13 +71,14 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = transform.Find("Mesh Object").GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;// bloquea el raton en centro de la pantalla y lo oculta
-        
+        TextoVidas.text = "Vidas" + vidas;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (estaVivo)
         {
             MoverYRotar();
@@ -95,6 +97,7 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
     }
     void MoverYRotar()
     {
@@ -215,8 +218,10 @@ public class Player : MonoBehaviour
             TextoMonedas.SetText("Monedas: " + monedas);
             Destroy(other.gameObject);
         }
+        
 
-        if(other.gameObject.CompareTag("Arma"))
+
+        if (other.gameObject.CompareTag("Arma"))
         {
             Items item = other.GetComponent<Items>();
 
@@ -231,7 +236,9 @@ public class Player : MonoBehaviour
     }
     public void RecibirDanho(float danhoEnemigo)
     {
+        VidasPantalla();
       vidas -= danhoEnemigo;
+
         if (vidas <= 0)
         {
             Muerte();
@@ -294,5 +301,10 @@ public class Player : MonoBehaviour
             
         }
     }
+    private void VidasPantalla()
+    {
+        TextoVidas.text = "Vidas: " + vidas;
+    }
+ 
 
 }
