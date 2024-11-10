@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
     public void Dodge()
     {
         
-      if(Input.GetKeyDown(KeyCode.Q) && !estaEsquivando )
+      if(Input.GetKeyDown(KeyCode.F) && !estaEsquivando )
       {
             direccionEsquive = transform.forward * velocidadEsquive;
             estaEsquivando=true;

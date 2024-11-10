@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
+    [SerializeField] private GameObject panelTutorial;
     public void Play()
     {
         //SceneManager.LoadScene(1);  
@@ -14,5 +15,13 @@ public class CanvasManager : MonoBehaviour
     {
         Debug.Log("Cerrar Juego");
         Application.Quit();
+    }
+    public void PanelTutorial()
+    {
+        panelTutorial.SetActive(true);
+    }
+    public void CerrarTutorial()
+    {
+        panelTutorial.SetActive(false);
     }
 }
