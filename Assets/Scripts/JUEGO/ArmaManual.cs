@@ -70,8 +70,8 @@ public class ArmaManual : MonoBehaviour
         if(Input.GetMouseButtonDown(0)  )
         {
             
-            if (misDatos != null)
-            {
+            //if (misDatos != null)
+            //{
                 if (misDatos.tipo == ArmaSO.TipoArma.Melee)
                 {
                     GolpearMelee();
@@ -80,7 +80,7 @@ public class ArmaManual : MonoBehaviour
                 {
                     DispararDistancia();
                 }
-            }
+            //}
             
 
         }
