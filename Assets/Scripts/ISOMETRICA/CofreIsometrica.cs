@@ -5,25 +5,23 @@ using UnityEngine;
 public class CofreIsometrica : MonoBehaviour
 {
     private Outline outline;
+    [SerializeField] private Texture2D iconoInteraccion;
+    [SerializeField] private Texture2D iconoPorDefecto;
     // Start is called before the first frame update
     void Start()
     {
        outline = GetComponent<Outline>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseEnter()
     {
+        Cursor.SetCursor(iconoInteraccion, Vector2.zero, CursorMode.Auto);
         outline.enabled = true;
-        Debug.Log("esta dentro");
+        
     }
     private void OnMouseExit()
     {
+        Cursor.SetCursor(iconoPorDefecto, Vector2.zero, CursorMode.Auto);
         outline.enabled = false;
     }
 }
