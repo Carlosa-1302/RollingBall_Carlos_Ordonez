@@ -165,6 +165,11 @@ public class Player : MonoBehaviour
         
     }
 
+    private void CambiarCamara()
+    {
+        
+    }
+
     private void AplicarGravedad()
     {
         movimientoVertical.y += factorGravedad * Time.deltaTime;

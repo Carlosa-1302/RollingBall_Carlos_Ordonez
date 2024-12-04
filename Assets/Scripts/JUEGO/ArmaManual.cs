@@ -38,14 +38,14 @@ public class ArmaManual : MonoBehaviour
 
     private Animator anim;
     private Camera cam;
-    private Player player;
+    private PlayerIsometrica player;
     private int municionActual;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main; //"MainCamera".
-        player = GetComponentInParent<Player>();
+        player = GetComponentInParent<PlayerIsometrica>();
 
         
 
