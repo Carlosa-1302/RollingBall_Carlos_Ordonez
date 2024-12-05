@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0042b75ddd2d644bfde1fdd8ead98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camThirdPerson: {fileID: 0}
+  camFirstPerson: {fileID: 0}
   vidas: 100
   velocidadMovimiento: 10
   velocidadCorrer: 20
@@ -184,7 +186,10 @@ MonoBehaviour:
   velocidadEsquive: 15
   duracionEsquive: 0.7
   TextoMonedas: {fileID: 0}
+  TextoVidas: {fileID: 0}
   monedas: 0
+  pantallaMuerte: {fileID: 0}
+  mensajeMuerto: {fileID: 0}
   ammo: 0
   Armas:
   - {fileID: 2209295490464177415}
@@ -661,8 +666,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   ParticleSystem: {fileID: 0}
+  balaPos: {fileID: 0}
+  bala: {fileID: 0}
+  balaCasePos: {fileID: 0}
+  balaCase: {fileID: 0}
   trailEffect: {fileID: 6449452583905722481}
   AreaMelee: {fileID: 8650846818004827854}
+  weaponPoint: {fileID: 0}
+  tiempoEsperaEntreGolpes: 0
+  duracionGolpe: 0.5
 --- !u!1001 &1919445775578594037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -973,14 +985,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8087886410691485107}
-    - targetCorrespondingSourceObject: {fileID: -3415992075058672098, guid: cae3f9537776dea41855a724b56dd2c9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6249982295340020975}
-    - targetCorrespondingSourceObject: {fileID: -3415992075058672098, guid: cae3f9537776dea41855a724b56dd2c9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5028686398036828248}
   m_SourcePrefab: {fileID: 100100000, guid: cae3f9537776dea41855a724b56dd2c9, type: 3}
 --- !u!4 &883724508928496280 stripped
 Transform:
@@ -1021,62 +1025,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &8317977343017056818 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3415992075058672098, guid: cae3f9537776dea41855a724b56dd2c9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2591981138735232044}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &6249982295340020975
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8317977343017056818}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.19729102
-  m_Height: 0.9864551
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.49322754, z: 0}
---- !u!54 &5028686398036828248
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8317977343017056818}
-  serializedVersion: 4
-  m_Mass: 1.25
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &4100634337467055245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1360,5 +1308,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   ParticleSystem: {fileID: 9087848376059640669}
+  balaPos: {fileID: 0}
+  bala: {fileID: 0}
+  balaCasePos: {fileID: 0}
+  balaCase: {fileID: 0}
   trailEffect: {fileID: 0}
   AreaMelee: {fileID: 0}
+  weaponPoint: {fileID: 0}
+  tiempoEsperaEntreGolpes: 0
+  duracionGolpe: 0.5

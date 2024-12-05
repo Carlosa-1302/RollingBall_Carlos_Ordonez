@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,14 @@ using UnityEngine.Video;
 
 public class Player : MonoBehaviour
 {
+
+    [Header("Camaras")]
+    [SerializeField] private GameObject camThirdPerson;
+    [SerializeField] private GameObject camFirstPerson;
+
+    private bool enPrimeraPersona = false;
+    private bool estoyEnTerceraPersona;
+
     [Header("Vida")]
     [SerializeField] private float vidas;
 
@@ -17,7 +26,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float factorGravedad;
     [SerializeField] private float fuerzaSalto;
     private Vector3 movimientoVertical;
-    bool estoyEnTerceraPersona;
 
 
 
@@ -93,6 +101,10 @@ public class Player : MonoBehaviour
             CambiarArma();
         }
         
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            CambiarCamara();
+        }
 
         if(estaMuerto && Input.GetKeyDown (KeyCode.R))
         {
@@ -117,57 +129,103 @@ public class Player : MonoBehaviour
             controller.Move(direccionEsquive * Time.deltaTime);
         }
 
-        if (input.magnitude > 0)
+        float velocidadActual = velocidadMovimiento;
+
+        if(enPrimeraPersona)
         {
-         
-            float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-            Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
-            if(estoyEnTerceraPersona)
+            Vector3 movimiento = new Vector3(h, 0, v).normalized;
+
+            transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+
+            if (movimiento.magnitude > 0)
+            {
+                float anguloRotacion = Mathf.Atan2(movimiento.x, movimiento.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+
+
+                Vector3 mover = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+                
+                
+
+
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    velocidadActual = velocidadCorrer;
+
+                    animator.SetBool("walking", false);
+                    animator.SetBool("running", true);
+                }
+                else
+                {
+                    
+                    animator.SetBool("walking", true);
+                    animator.SetBool("running", false);
+                }
+
+
+                controller.Move(mover * velocidadActual * Time.deltaTime);
+            }
+            else
+            {
+                animator.SetBool("walking", false);
+                animator.SetBool("running", false);
+            }
+        }
+        else
+        {
+            if (input.magnitude > 0)
             {
 
-                Quaternion rotacionSuave = Quaternion.Euler(0,anguloRotacion, 0);
+                float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
+
+                Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+
+
+                Quaternion rotacionSuave = Quaternion.Euler(0, anguloRotacion, 0);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotacionSuave, 10 * Time.deltaTime);
 
                 //transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
 
+
+
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    controller.Move(movimiento * velocidadCorrer * Time.deltaTime);
+
+                    animator.SetBool("walking", false);
+                    animator.SetBool("running", true);
+                }
+                else
+                {
+                    controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
+                    animator.SetBool("walking", true);
+                    animator.SetBool("running", false);
+                }
+
+
             }
             else
             {
-                estoyEnTerceraPersona = true;
-                transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
-            }
-
-            
-            
-
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                controller.Move(movimiento * velocidadCorrer * Time.deltaTime);
-
                 animator.SetBool("walking", false);
-                animator.SetBool("running", true);
-            }
-            else
-            {
-                controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
-                animator.SetBool("walking", true);
                 animator.SetBool("running", false);
             }
-            
-
         }
-        else
-        {
-            animator.SetBool("walking", false);
-            animator.SetBool("running", false);
-        }
+        
         
     }
 
     private void CambiarCamara()
     {
-        
+        enPrimeraPersona = !enPrimeraPersona;
+
+        camFirstPerson.SetActive(enPrimeraPersona);
+        camThirdPerson.SetActive(!enPrimeraPersona);
+
+        if(!enPrimeraPersona)
+        {
+            float anguloRotacion = Mathf.Atan2(transform.forward.x, transform.forward.z) * Mathf.Rad2Deg; 
+            transform.rotation = Quaternion.Euler(0, anguloRotacion, 0);
+        }
     }
 
     private void AplicarGravedad()

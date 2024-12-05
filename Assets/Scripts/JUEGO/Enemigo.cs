@@ -19,7 +19,7 @@ public class Enemigo : MonoBehaviour
 
 
 
-    private PlayerIsometrica player;
+    private Player player;
     private bool ventanaAbierta;
     private bool puedoDanhar = true;
     private bool estaMueriendo  = false;
@@ -36,7 +36,7 @@ public class Enemigo : MonoBehaviour
     void Start()
     {
         agent = GetComponentInParent<NavMeshAgent>();
-        player = GameObject.FindAnyObjectByType<PlayerIsometrica>();
+        player = GameObject.FindAnyObjectByType<Player>();
         anim = GetComponentInChildren<Animator>();
 
     }
