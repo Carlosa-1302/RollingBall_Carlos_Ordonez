@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     int ArmaNº = -1;
 
     public int ArmaNº1 { get => ArmaNº; set => ArmaNº = value; }
+    public bool EnPrimeraPersona { get => enPrimeraPersona; set => enPrimeraPersona = value; }
 
 
 

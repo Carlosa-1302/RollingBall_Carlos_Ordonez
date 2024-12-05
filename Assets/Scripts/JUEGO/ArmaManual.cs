@@ -41,6 +41,8 @@ public class ArmaManual : MonoBehaviour
     private Player player;
     private int municionActual;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -145,9 +147,24 @@ public class ArmaManual : MonoBehaviour
         if(misDatos.tipo != ArmaSO.TipoArma.Distancia) return;
         if (municionActual > 0)
         {
-            GameObject BalaSpawn = Instantiate(bala, balaPos.position, balaPos.rotation);
+            Vector3 origenDisparo;
+            Vector3 direccionDisparo;
+
+            if (player.EnPrimeraPersona)
+            {
+                origenDisparo = cam.transform.position; // Frontal de la cámara en primera persona
+                direccionDisparo = cam.transform.forward;
+            }
+            else
+            {
+                origenDisparo = balaPos.position; // Desde el arma en tercera persona
+                direccionDisparo = balaPos.forward;
+            }
+
+
+            GameObject BalaSpawn = Instantiate(bala, origenDisparo, Quaternion.LookRotation(direccionDisparo));
             Rigidbody balaRigid = BalaSpawn.GetComponent<Rigidbody>();
-            balaRigid.velocity = balaPos.forward * 50;
+            balaRigid.velocity = direccionDisparo * 50;
 
             GameObject BalaCasquillo = Instantiate(balaCase, balaCasePos.position, balaCasePos.rotation);
             Rigidbody balaCaseRigid = BalaCasquillo.GetComponent<Rigidbody>();
@@ -166,7 +183,7 @@ public class ArmaManual : MonoBehaviour
             }
 
 
-            if (Physics.Raycast(balaPos.position, balaPos.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
+            if (Physics.Raycast(origenDisparo, direccionDisparo, out RaycastHit hitInfo, misDatos.distanciaAtaque))
             {
 
                 //hitInfo.transform.GetComponent<Enemigo>().VidaEnemigo1-=misDatos.danhoAtaque; //encapsular no hace falta

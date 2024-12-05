@@ -66,10 +66,10 @@ public class Enemigo : MonoBehaviour
             if (!puedoDanhar) return;
             for (int i = 0; i < collsDetectados.Length; i++)
             {
-                PlayerIsometrica player = collsDetectados[i].GetComponent<PlayerIsometrica>();
+                Player player = collsDetectados[i].GetComponent<Player>();
                 if (player != null)
                 {
-                    //player.RecibirDanho(danhoEnemigo); ATENTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO QUITA EL COMENTARIO
+                    player.RecibirDanho(danhoEnemigo); //ATENTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO QUITA EL COMENTARIO
                     puedoDanhar = false;
                     break;
                 }
