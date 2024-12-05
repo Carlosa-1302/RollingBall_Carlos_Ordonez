@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float factorGravedad;
     [SerializeField] private float fuerzaSalto;
     private Vector3 movimientoVertical;
+    bool estoyEnTerceraPersona;
 
 
 
@@ -115,19 +116,29 @@ public class Player : MonoBehaviour
         {
             controller.Move(direccionEsquive * Time.deltaTime);
         }
-        else if (input.magnitude > 0)
+
+        if (input.magnitude > 0)
         {
          
-
-
             float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+            Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+            if(estoyEnTerceraPersona)
+            {
 
-            Quaternion rotacionSuave = Quaternion.Euler(0,anguloRotacion, 0);
+                Quaternion rotacionSuave = Quaternion.Euler(0,anguloRotacion, 0);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotacionSuave, 10 * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotacionSuave, 10 * Time.deltaTime);
 
-            //transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
-             Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
+                //transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
+
+            }
+            else
+            {
+                estoyEnTerceraPersona = true;
+                transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
+            }
+
+            
             
 
             if (Input.GetKey(KeyCode.LeftShift))
@@ -151,6 +162,11 @@ public class Player : MonoBehaviour
             animator.SetBool("walking", false);
             animator.SetBool("running", false);
         }
+        
+    }
+
+    private void CambiarCamara()
+    {
         
     }
 
