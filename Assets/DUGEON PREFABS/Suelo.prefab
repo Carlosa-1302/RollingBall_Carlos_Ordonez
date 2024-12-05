@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2016064788446060068}
   - component: {fileID: 4873329207547061358}
   - component: {fileID: 7950096944610818524}
-  - component: {fileID: 8558137410714686851}
+  - component: {fileID: 146151329442634092}
   m_Layer: 0
   m_Name: Suelo
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8558137410714686851
+--- !u!65 &146151329442634092
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
