@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     [SerializeField]private int monedas;
     [SerializeField] private GameObject pantallaMuerte;
     [SerializeField] private TextMeshPro mensajeMuerto;
+    [SerializeField] private GameObject crosshair;
     private bool estaMuerto = false;
     private bool estaVivo = true;
 
@@ -221,6 +222,8 @@ public class Player : MonoBehaviour
 
         camFirstPerson.SetActive(enPrimeraPersona);
         camThirdPerson.SetActive(!enPrimeraPersona);
+
+        crosshair.SetActive(enPrimeraPersona);
 
         if(!enPrimeraPersona)
         {

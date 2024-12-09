@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    [SerializeField] private DialogoSO miDialogo;
     [SerializeField] private float duracionRotacion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,14 @@ public class NPC : MonoBehaviour
     }
     public void Interactuar(Transform interactuador)
     {
-
-        Debug.Log("Hola!");
-        transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y);
+        //Poco a poco voy Rotando hacie el interactuador y cuando termine de rotarme.... se inicia la interaccion
+        
+        transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteraccion);
     }
     
+    private void IniciarInteraccion()
+    {
+        SistemaDialogo.sistema.IniciarDialogo(miDialogo);
+        Debug.Log("Hola!");
+    }
 }
