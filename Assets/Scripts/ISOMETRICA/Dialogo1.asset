@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8292cc3317bf7ef46872179feb946e19, type: 3}
   m_Name: Dialogo1
   m_EditorClassIdentifier: 
-  frases: []
-  tiempoEntreLetras: 0
+  frases:
+  - "!Hola, aventurero\xA1 te esperan grandes aventuras, anveturero."
+  - Necesito que me hagas un encargo, porque mi abuelita se ha puesto enferma.
+  - Necesito que me busques unas hierbas medicinales para curarla
+  tiempoEntreLetras: 0.02
