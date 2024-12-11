@@ -88,8 +88,10 @@ public class Enemigo : MonoBehaviour
 
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                agent.isStopped = true;
+                //agent.isStopped = true;
                 anim.SetBool("attacking", true);
+
+                EnfocarObjetivo();
             }
             else
             {
@@ -105,9 +107,21 @@ public class Enemigo : MonoBehaviour
         
     }
 
+    private void EnfocarObjetivo()
+    {
+        Vector3 direccionAObjetivo = player.transform.position - transform.position;
+
+        direccionAObjetivo.y = 0;
+
+        Quaternion rotacionAObjetivo = Quaternion.LookRotation(direccionAObjetivo);
+
+        transform.rotation = rotacionAObjetivo;
+    }
+
     public void FinAtaque()
     {
-        agent.isStopped = false;
+        Debug.Log("Termino ataque!");
+        //agent.isStopped = false;
         anim.SetBool("attacking", false);
         puedoDanhar = true;
 
@@ -137,6 +151,11 @@ public class Enemigo : MonoBehaviour
     private void DestruirEnemigo()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(attackPoint.position, radioAtaque);
     }
 }
 
