@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5304285457178202626}
   - component: {fileID: 4043800054160133958}
   - component: {fileID: 5153931263226940253}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: BulletHandGun
   m_TagString: Bala
   m_Icon: {fileID: 0}
