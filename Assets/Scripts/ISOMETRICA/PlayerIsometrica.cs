@@ -22,7 +22,11 @@ public class PlayerIsometrica : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movimiento();
+        if(Time.timeScale == 1)
+        {
+
+            Movimiento();
+        }
 
         ComprobarInteraccion();
     }
