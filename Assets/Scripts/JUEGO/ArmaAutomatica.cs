@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class ArmaAutomatica : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private ArmaSO misDatos;
+
+
+    
+
 
     [Header("Distancia")]
     [SerializeField] private Transform balaPos;
@@ -24,8 +29,15 @@ public class ArmaAutomatica : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        player = GetComponentInParent<Player>();
 
         timer = misDatos.cadenciaAtaque;
+
+        if (player != null)
+        {
+            anim = player.GetComponentInChildren<Animator>();
+
+        }
     }
 
     // Update is called once per frame

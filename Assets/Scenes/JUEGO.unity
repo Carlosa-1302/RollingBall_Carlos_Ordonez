@@ -14822,6 +14822,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1159259646}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &872686955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4104072649501096652, guid: 8f5e135a19626f544908fc8f156144b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1324551474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &877539939
 GameObject:
   m_ObjectHideFlags: 0
@@ -15467,6 +15473,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709ada8f1423cfd4198e8069d05c4ba5, type: 3}
+--- !u!4 &929823219 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4365603485316239033, guid: 8f5e135a19626f544908fc8f156144b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1324551474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937917601
 GameObject:
   m_ObjectHideFlags: 0
@@ -19738,6 +19750,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106905877595100290, guid: 8f5e135a19626f544908fc8f156144b9,
+        type: 3}
+      propertyPath: bala
+      value: 
+      objectReference: {fileID: 3500217534004576326, guid: b1fe4857a7263ea4fa8a4b79761b03bf,
+        type: 3}
+    - target: {fileID: 8106905877595100290, guid: 8f5e135a19626f544908fc8f156144b9,
+        type: 3}
+      propertyPath: balaPos
+      value: 
+      objectReference: {fileID: 929823219}
+    - target: {fileID: 8106905877595100290, guid: 8f5e135a19626f544908fc8f156144b9,
+        type: 3}
+      propertyPath: balaCase
+      value: 
+      objectReference: {fileID: 2237857642893693012, guid: 0dfa8f5e8cb8b634aabf480d53b10b3e,
+        type: 3}
+    - target: {fileID: 8106905877595100290, guid: 8f5e135a19626f544908fc8f156144b9,
+        type: 3}
+      propertyPath: balaCasePos
+      value: 
+      objectReference: {fileID: 872686955}
+    - target: {fileID: 8106905877595100290, guid: 8f5e135a19626f544908fc8f156144b9,
+        type: 3}
+      propertyPath: queEsDanhable.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 9088668256302956510, guid: 8f5e135a19626f544908fc8f156144b9,
         type: 3}
