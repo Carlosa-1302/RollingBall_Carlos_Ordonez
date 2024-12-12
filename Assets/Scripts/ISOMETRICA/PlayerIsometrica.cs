@@ -9,6 +9,8 @@ public class PlayerIsometrica : MonoBehaviour
     private Camera cam;
     private NavMeshAgent agent;
 
+
+
     //Alamceno el ultimo transform que clické con el ratón.
     private Transform ultimoClick;
     private Animator anim;
@@ -16,7 +18,8 @@ public class PlayerIsometrica : MonoBehaviour
     {
         cam = Camera.main;
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
+        //anim = transform.Find("Mesh Object").GetComponent<Animator>();
     }
 
     // Update is called once per frame
