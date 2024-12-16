@@ -8,18 +8,9 @@ public class NPC : MonoBehaviour
 {
     [SerializeField] private DialogoSO miDialogo;
     [SerializeField] private float duracionRotacion;
+    [SerializeField] private Transform cameraPoint;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void Interactuar(Transform interactuador)
     {
         //Poco a poco voy Rotando hacie el interactuador y cuando termine de rotarme.... se inicia la interaccion
@@ -29,7 +20,8 @@ public class NPC : MonoBehaviour
     
     private void IniciarInteraccion()
     {
-        SistemaDialogo.sistema.IniciarDialogo(miDialogo);
+        SistemaDialogo.sistema.IniciarDialogo(miDialogo, cameraPoint);
         Debug.Log("Hola!");
     }
+
 }
