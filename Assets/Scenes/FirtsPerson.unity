@@ -7271,6 +7271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0042b75ddd2d644bfde1fdd8ead98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camThirdPerson: {fileID: 0}
+  camFirstPerson: {fileID: 0}
   vidas: 100
   velocidadMovimiento: 10
   velocidadCorrer: 20
@@ -7289,6 +7291,7 @@ MonoBehaviour:
   monedas: 0
   pantallaMuerte: {fileID: 0}
   mensajeMuerto: {fileID: 0}
+  crosshair: {fileID: 0}
   ammo: 0
   Armas:
   - {fileID: 398305582720583510}
