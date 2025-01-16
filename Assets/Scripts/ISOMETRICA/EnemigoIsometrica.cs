@@ -13,7 +13,10 @@ public class EnemigoIsometrica : MonoBehaviour
     public SistemaPatrulla Patrulla { get => patrulla; set => patrulla = value; }
     public SistemaCombate Combate { get => combate; set => combate = value; }
     public Transform Target { get => target; set => target = value; }
-
+    private void Start()
+    {
+        patrulla.enabled = true;
+    }
     public void activarCombate(Transform target)
     {
         
@@ -22,14 +25,13 @@ public class EnemigoIsometrica : MonoBehaviour
         this.target = target;//Definimos target.
     }
 
-    void Start()
+    public void ActivarPatrulla()
     {
-        
+        //Deshabilitar combate
+        combate.enabled = false;
+        //Activar Patrulla
+        patrulla.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

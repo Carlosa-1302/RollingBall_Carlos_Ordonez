@@ -35,12 +35,19 @@ public class SistemaPatrulla : MonoBehaviour
     }
     private void OnEnable()
     {
+        //El stoppingDistance vuelve a ser 0
+        agent.stoppingDistance = 0;
+        indiceDestinoActual = -1;
+
+        //Vuelvo a la velocidad de patrulla
         agent.speed = velocidadPatrulla;
+        //Y patrullo cuando vuelve activarse el script
+        StartCoroutine(PatrullarYEsperar());
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(PatrullarYEsperar());
 
     }
 

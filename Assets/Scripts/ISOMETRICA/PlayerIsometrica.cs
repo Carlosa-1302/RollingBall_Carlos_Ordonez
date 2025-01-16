@@ -80,4 +80,9 @@ public class PlayerIsometrica : MonoBehaviour
             agent.stoppingDistance = 0f;
         }
     }
+
+    public void HacerDanho(float danhoAtaque)
+    {
+        Debug.Log("Me hacen pupa: " +  danhoAtaque);
+    }
 }

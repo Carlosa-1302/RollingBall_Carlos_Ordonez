@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IInteractuable
 {
     [SerializeField] private DialogoSO miDialogo;
     [SerializeField] private float duracionRotacion;
@@ -17,7 +17,12 @@ public class NPC : MonoBehaviour
         
         transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteraccion);
     }
-    
+
+    public void Interactuar()
+    {
+        
+    }
+
     private void IniciarInteraccion()
     {
         SistemaDialogo.sistema.IniciarDialogo(miDialogo, cameraPoint);
