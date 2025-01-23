@@ -11,6 +11,8 @@ public class SistemaDialogo : MonoBehaviour
 
     [SerializeField] private Transform npcCamera; //Camara compartida por todos los NPCs.
 
+    [SerializeField] protected AudioSource audiosource;
+
     public static SistemaDialogo sistema;
 
 
