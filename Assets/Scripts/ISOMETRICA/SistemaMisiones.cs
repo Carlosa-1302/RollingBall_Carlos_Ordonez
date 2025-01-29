@@ -18,7 +18,7 @@ public class SistemaMisiones : MonoBehaviour
         //Alimentos el texto con el contenido de la mision
         tooglesMision[mision.indiceMision].TextoMision.text = mision.ordenInicial;
         //Y si tiene repeticion.....
-        if(mision.TieneRepeticion)
+        if(mision.tieneRepeticion)
         {
             tooglesMision[mision.indiceMision].TextoMision.text += "(" + mision.repeticionActual + "/" + mision.totalRepeticiones + ")";
         }
