@@ -57,7 +57,7 @@ public class PlayerIsometrica : MonoBehaviour
     private void ComprobarInteraccion()
     {
         //Si existe un interractuable al cual clické y lleva consigo el script NPC 
-        if(ultimoClick != null && ultimoClick.TryGetComponent(out NPC npc))
+        if(ultimoClick != null && ultimoClick.TryGetComponent(out IInteractuable interactuacle))
         {
             //Actualizo distancia de parada para no comerme al NPC
             agent.stoppingDistance = 2f;
@@ -67,7 +67,7 @@ public class PlayerIsometrica : MonoBehaviour
             {
                 //Y por lo tanto, interactuo con el NPC
 
-                npc.Interactuar(transform);
+                interactuacle.Interactuar(transform);
 
                 //Me olvido de cual fue el ultimo click, por que solo quiero interactuar UNA VEZ.
                 ultimoClick = null;

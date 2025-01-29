@@ -15,13 +15,13 @@ public class SetaDeMuerte : MonoBehaviour, IInteractuable
         outline = GetComponent<Outline>();
     }
 
-    public void Interactuar()
+    /*public void Interactuar()
     {
         mision.repeticionActual++;  //Aumentamos en un la repeticion de esta Mision
 
 
         //Todavia quedan setas por recoger
-        if (mision.repeticionActual < mision.toalRepeticions)
+        if (mision.repeticionActual < mision.totalRepeticiones)
         {
             eventManager.ActualizarMision(mision);
         }
@@ -31,7 +31,7 @@ public class SetaDeMuerte : MonoBehaviour, IInteractuable
         }
         
         Destroy(gameObject);
-    }
+    }*/
 
     private void OnMouseEnter() => outline.enabled = true;//Es una forma de ponerlo con Lamba
     
@@ -39,5 +39,23 @@ public class SetaDeMuerte : MonoBehaviour, IInteractuable
     private void OnMouseExit()
     {
         outline.enabled = false;
+    }
+
+    public void Interactuar(Transform interactuador)
+    {
+        mision.repeticionActual++;  //Aumentamos en un la repeticion de esta Mision
+
+
+        //Todavia quedan setas por recoger
+        if (mision.repeticionActual < mision.totalRepeticiones)
+        {
+            eventManager.ActualizarMision(mision);
+        }
+        else//Ya hemos terminado de recotger todas las setas
+        {
+            eventManager.TerminarMision(mision);
+        }
+
+        Destroy(gameObject);
     }
 }

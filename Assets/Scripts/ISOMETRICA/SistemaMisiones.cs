@@ -8,21 +8,11 @@ public class SistemaMisiones : MonoBehaviour
     [SerializeField] private ToogleMision[] tooglesMision;
     private void OnEnable()
     {
+        //Me suscribo 
         eventManager.OnNuevaMision += EncenderToggleMision;
         eventManager.OnActualizarMision += ActualizarToggleMision;
         eventManager.OnTerminarMision += TerminarToggleMision;
     }
-
-    private void TerminarToggleMision(MisionSO obj)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    private void ActualizarToggleMision(MisionSO obj)
-    {
-        throw new System.NotImplementedException();
-    }
-
     private void EcenderToggleMision(MisionSO mision)
     {
         //Alimentos el texto con el contenido de la mision
@@ -34,15 +24,18 @@ public class SistemaMisiones : MonoBehaviour
         }
         tooglesMision[mision].gameObject.SetActive(true);//ENciendo el toggle para que se vea en Pantalla
     }
-    // Start is called before the first frame update
-    void Start()
+    private void ActualizarToggleMision(MisionSO mision)
     {
-        
+        tooglesMision[mision.indiceMision].TextoMision.text = mision.ordenInicial;
+        tooglesMision[mision.indiceMision].TextoMision.text += "(" + mision.repeticionActual + "/" + mision.totalRepeticiones + ")";
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TerminarToggleMision(MisionSO mision)
     {
-        
+        tooglesMision[mision.indiceMision].ToggleVisual.isOn = true;//Al terminar la mision "Checkeamos" el toggle
+        tooglesMision[mision.indiceMision].TextoMision.text = mision.ordenFinal;// Ponemos el texto de Victoria
     }
+
+
+    
 }
