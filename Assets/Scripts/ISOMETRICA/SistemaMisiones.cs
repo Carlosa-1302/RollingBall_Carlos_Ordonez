@@ -8,7 +8,7 @@ public class SistemaMisiones : MonoBehaviour
     [SerializeField] private ToogleMision[] tooglesMision;
     private void OnEnable()
     {
-        //Me suscribo 
+        /*//Me suscribo 
         eventManager.OnNuevaMision += EncenderToggleMision;
         eventManager.OnActualizarMision += ActualizarToggleMision;
         eventManager.OnTerminarMision += TerminarToggleMision;
@@ -34,8 +34,8 @@ public class SistemaMisiones : MonoBehaviour
     {
         tooglesMision[mision.indiceMision].ToggleVisual.isOn = true;//Al terminar la mision "Checkeamos" el toggle
         tooglesMision[mision.indiceMision].TextoMision.text = mision.ordenFinal;// Ponemos el texto de Victoria
-    }
+    }*/
 
 
-    
+    }    
 }
