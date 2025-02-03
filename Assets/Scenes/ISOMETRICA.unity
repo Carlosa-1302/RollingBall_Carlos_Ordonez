@@ -729,6 +729,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8050124233557278684, guid: 4f0a5f03459da6c45869855b6b5aa1d3,
+        type: 3}
+      propertyPath: eventManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b7438e63eee29944b75a627bfa74a51,
+        type: 2}
     - target: {fileID: 8889135547520916691, guid: 4f0a5f03459da6c45869855b6b5aa1d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5414,6 +5420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 728682722}
+  - component: {fileID: 728682723}
   m_Layer: 5
   m_Name: SistemaMisiones
   m_TagString: Untagged
@@ -5441,6 +5448,20 @@ RectTransform:
   m_AnchoredPosition: {x: 137.87735, y: -78}
   m_SizeDelta: {x: 226.5294, y: 108.3972}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &728682723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728682721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff0936debcb7914183dd50180041442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventManager: {fileID: 11400000, guid: 8b7438e63eee29944b75a627bfa74a51, type: 2}
+  tooglesMision: []
 --- !u!1001 &744831612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6253,6 +6274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7770889dde27e41a4fafa23686b76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiempoDifuminado: 1
 --- !u!135 &828232537
 SphereCollider:
   m_ObjectHideFlags: 0
