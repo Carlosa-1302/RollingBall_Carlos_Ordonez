@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu (menuName = "Mision")] 
 public class MisionSO : ScriptableObject
 {
     public string ordenInicial;//mensaje inicial.

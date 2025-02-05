@@ -729,6 +729,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8050124233557278684, guid: 4f0a5f03459da6c45869855b6b5aa1d3,
+        type: 3}
+      propertyPath: eventManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b7438e63eee29944b75a627bfa74a51,
+        type: 2}
     - target: {fileID: 8889135547520916691, guid: 4f0a5f03459da6c45869855b6b5aa1d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5414,6 +5420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 728682722}
+  - component: {fileID: 728682723}
   m_Layer: 5
   m_Name: SistemaMisiones
   m_TagString: Untagged
@@ -5441,6 +5448,21 @@ RectTransform:
   m_AnchoredPosition: {x: 137.87735, y: -78}
   m_SizeDelta: {x: 226.5294, y: 108.3972}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &728682723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728682721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff0936debcb7914183dd50180041442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventManager: {fileID: 11400000, guid: 8b7438e63eee29944b75a627bfa74a51, type: 2}
+  tooglesMision:
+  - {fileID: 1566927577}
 --- !u!1001 &744831612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6208,6 +6230,73 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 814681350}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &828232534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828232535}
+  - component: {fileID: 828232537}
+  - component: {fileID: 828232536}
+  m_Layer: 6
+  m_Name: WallsDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828232535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828232534}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 863415062115652464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828232536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828232534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7770889dde27e41a4fafa23686b76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiempoDifuminado: 1
+--- !u!135 &828232537
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828232534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 5
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!4 &830807784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7114967513538600368, guid: 1d1faa1bf63b9df40a0459ca7bae01c6,
@@ -12887,6 +12976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1566927575}
   - component: {fileID: 1566927576}
+  - component: {fileID: 1566927577}
   m_Layer: 5
   m_Name: ToggleMisionSetas
   m_TagString: Untagged
@@ -12962,6 +13052,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1566927577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566927574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdb5b09a2e613547ac2566d91e13c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textoMision: {fileID: 783805650}
 --- !u!1001 &1588887051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18829,7 +18932,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6514571414192896750, guid: 1c95120c6b735504896ba6bcd5c00fb5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 828232535}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c95120c6b735504896ba6bcd5c00fb5, type: 3}
 --- !u!4 &4893512853175798395
@@ -19279,11 +19386,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pared
-      objectReference: {fileID: 0}
-    - target: {fileID: 2480263478862568812, guid: 02e1db9f53287ce43bf5fd2bdd72bb87,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7911483194089430152, guid: 02e1db9f53287ce43bf5fd2bdd72bb87,
         type: 3}

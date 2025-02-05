@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Mision")] 
 public class ToogleMision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private TMP_Text textoMision;
+    private Toggle toggleVisual;
 
-    // Update is called once per frame
-    void Update()
+    public TMP_Text TextoMision { get => textoMision; set => textoMision = value; }
+    public Toggle ToggleVisual { get => toggleVisual; set => toggleVisual = value; }
+
+    private void Awake()
     {
-        
+        toggleVisual = GetComponent<Toggle>();
     }
 }

@@ -13,6 +13,7 @@ TagManager:
   - Enemigo
   - Bala
   - Salud
+  - Obstaculo
   layers:
   - Default
   - TransparentFX
