@@ -53,6 +53,7 @@ MonoBehaviour:
   marcoDialogo: {fileID: 6421679780554267428}
   textoDialogo: {fileID: 5809240846437854335}
   npcCamera: {fileID: 7134572369147748420}
+  audiosource: {fileID: 0}
 --- !u!1 &2540017811193316636
 GameObject:
   m_ObjectHideFlags: 0
