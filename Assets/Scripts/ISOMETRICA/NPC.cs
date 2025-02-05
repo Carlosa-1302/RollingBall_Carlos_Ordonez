@@ -10,10 +10,10 @@ public class NPC : MonoBehaviour, IInteractuable
     [SerializeField] private MisionSO miMision;
     [SerializeField] private DialogoSO miDialogo1;
     [SerializeField] private DialogoSO miDialogo2;
-    [SerializeField] private DialogoSO dialogoActual;
     [SerializeField] private float duracionRotacion;
     [SerializeField] private Transform cameraPoint;
 
+    private DialogoSO dialogoActual;
     private void Awake()
     {
         dialogoActual = miDialogo1;

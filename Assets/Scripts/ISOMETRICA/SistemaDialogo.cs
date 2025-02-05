@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SistemaDialogo : MonoBehaviour
 {
+    [SerializeField] private EventManagerSO eventManager;
+
     [SerializeField] private GameObject marcoDialogo; //Marco a habilitar/deshabilitar
 
     [SerializeField] private TMP_Text textoDialogo; // El texto donde se veran reflejados los dialogos
@@ -139,7 +141,10 @@ public class SistemaDialogo : MonoBehaviour
         indiceFraseActual = 0; //Para que en posteriores dialogos empezemos dede indice 0.
 
         //escribiendo = false;
-
+        if(dialogoActual.tieneMision)
+        {
+            eventManager.NuevaMision(dialogoActual.mision);
+        }
         dialogoActual = null; // Ya no tengo dialogo que escribir.
     }
 

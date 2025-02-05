@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8292cc3317bf7ef46872179feb946e19, type: 3}
+  m_Name: MISIONDIALOGO1
+  m_EditorClassIdentifier: 
+  frases:
+  - 'BUSCAME 3 SETAS PARA MI ABUELA
+
+'
+  tiempoEntreLetras: 0.2
+  tieneMision: 1
+  mision: {fileID: 11400000, guid: 7290079d5da928d458e6f219f3db6dbb, type: 2}
