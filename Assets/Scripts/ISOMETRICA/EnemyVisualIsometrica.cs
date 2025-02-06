@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemigoAnimaciones : MonoBehaviour
+public class EnemyVisualIsometrica : MonoBehaviour
 {
-    [SerializeField] private EnemigoIsometrica enemigoIsometrica;
+    /*[SerializeField] private EnemigoIsometrica enemigoIsometrica;
     [SerializeField] private NavMeshAgent agent;
 
     private Animator anim;
@@ -19,12 +19,6 @@ public class EnemigoAnimaciones : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Actualizo el parametro "velocity" en funcion de la velocidad del agente
-
-        anim.SetFloat("velocity", agent.velocity.magnitude / agent.speed);
-    }
-    public void EjecutarAnimacionMuerte()
-    {
-        anim.SetTrigger("death");
-    }
+        anim.SetFloat("velocity")
+    }*/
 }

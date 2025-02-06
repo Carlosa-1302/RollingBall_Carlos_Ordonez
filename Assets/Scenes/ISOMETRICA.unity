@@ -15886,7 +15886,7 @@ GameObject:
   - component: {fileID: 1949192090}
   - component: {fileID: 1949192089}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemoIsometrica
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15977,6 +15977,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc111a203759e14d974707f3a8872da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidasIniciales: 0
+  localCanvas: {fileID: 1542310689}
+  barraVida: {fileID: 1053307490}
+  outline: {fileID: 0}
+  coll: {fileID: 0}
 --- !u!1001 &1951873493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18873,6 +18878,11 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 3176018708863749364, guid: 1c95120c6b735504896ba6bcd5c00fb5,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 4687411718296089849}
     - target: {fileID: 6379463010717322161, guid: 1c95120c6b735504896ba6bcd5c00fb5,
         type: 3}
       propertyPath: m_Name
@@ -18937,6 +18947,18 @@ PrefabInstance:
       addedObject: {fileID: 828232535}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c95120c6b735504896ba6bcd5c00fb5, type: 3}
+--- !u!114 &4687411718296089849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2275435350157081645, guid: 1c95120c6b735504896ba6bcd5c00fb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4687411718296089848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830f81bf3beb0714298bd33d500b665a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4893512853175798395
 Transform:
   m_ObjectHideFlags: 0
@@ -19085,6 +19107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1733dd2a8130cb945a4f6c5419c3fbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemigoIsometrica: {fileID: 1949192093}
   agent: {fileID: 1949192089}
 --- !u!95 &5233904801739854019
 Animator:
@@ -19134,6 +19157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8280308177353508163}
+  - component: {fileID: 8280308177353508164}
   m_Layer: 0
   m_Name: EnemyVisual
   m_TagString: Untagged
@@ -19671,6 +19695,20 @@ Transform:
   - {fileID: 830898548544795961}
   m_Father: {fileID: 1949192092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8280308177353508164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442951975528600529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1733dd2a8130cb945a4f6c5419c3fbdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemigoIsometrica: {fileID: 1949192093}
+  agent: {fileID: 1949192089}
 --- !u!4 &8422855904178303563
 Transform:
   m_ObjectHideFlags: 0

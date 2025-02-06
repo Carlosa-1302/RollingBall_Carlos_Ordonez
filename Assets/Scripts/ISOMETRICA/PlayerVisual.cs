@@ -5,9 +5,23 @@ using UnityEngine.AI;
 
 public class PlayerVisual : MonoBehaviour
 {
+    //[SerializeField] private EventManagerSO gM;
+    //[SerializeField] private int visualID;
+    [SerializeField] private PlayerIsometrica player;
     [SerializeField] private NavMeshAgent agent;
     private Animator anim;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        /*if(gM.idchara)
+        {
+            player.VisualSystem = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }*/
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,5 +34,21 @@ public class PlayerVisual : MonoBehaviour
         //agent.velocity.magnitude ---> Velocidad actual...
         //agent.speed --> es maxima velocidad que tengo configurada
         anim.SetFloat("velocity", agent.velocity.magnitude / agent.speed);
+    }
+    private void LanzarAtaque()
+    {
+        player.Atacar();
+    }
+    public void EjecutarAnimacionMuerte()
+    {
+        anim.SetTrigger("death");
+    }
+    public void StartAttacking()
+    {
+        anim.SetBool("attacking", true);
+    }
+    public void StopAttacking() 
+    {   
+        anim.SetBool("attacking", false);
     }
 }
