@@ -38,10 +38,7 @@ public class NPC : MonoBehaviour, IInteractuable
         transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteraccion);
     }
 
-    public void Interactuar()
-    {
-        
-    }
+    
 
     private void IniciarInteraccion()
     {

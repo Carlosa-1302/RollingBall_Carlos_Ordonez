@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class EventManagerSO : ScriptableObject
 {
+    
     public event Action<MisionSO> OnNuevaMision;
     public event Action<MisionSO> OnActualizarMision;
     public event Action<MisionSO> OnTerminarMision; //lo que esta dentro del action es para pasar informacion extra
@@ -26,4 +27,5 @@ public class EventManagerSO : ScriptableObject
     {
         OnTerminarMision?.Invoke(mision);
     }
+    
 }

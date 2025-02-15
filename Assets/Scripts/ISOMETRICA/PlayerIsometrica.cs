@@ -6,10 +6,10 @@ using UnityEngine.AI;
 
 public class PlayerIsometrica : MonoBehaviour, IIDanhable
 {
-    [SerializeField] private float vidas = 200;
+    [SerializeField] private float vidas ;
     [SerializeField] private float distanciaInteraccion = 2f;
-    [SerializeField] private float distanciaAtaque = 2f;
-    [SerializeField] private float danhoAtaque = 10f;
+    [SerializeField] private float distanciaAtaque;
+    [SerializeField] private float danhoAtaque;
 
     private int totalCoins;
     private PlayerVisual visualSystem;
@@ -23,7 +23,7 @@ public class PlayerIsometrica : MonoBehaviour, IIDanhable
 
     //Alamceno el ultimo transform que clické con el ratón.
     private Transform objetivoActual;
-    private Transform ultimoClick;
+    private Transform ultimoClick; 
 
     public PlayerVisual VisualSystem { get => visualSystem; set => visualSystem = value; }
     public int TotalCoins { get => totalCoins; set => totalCoins = value; }
@@ -51,11 +51,11 @@ public class PlayerIsometrica : MonoBehaviour, IIDanhable
 
     private void Movimiento()
     {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         //si Clickp con el mouse izd
         if (Input.GetMouseButtonDown(0))
         {
             //Creo un rayo desde la camara a la posicion del raton
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             //Y si ese rayo impacta en algo
             if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
@@ -71,9 +71,10 @@ public class PlayerIsometrica : MonoBehaviour, IIDanhable
             }
 
         }
-        if(ultimoClick)
+        if (ultimoClick)
         {
             VisualSystem.StopAttacking();
+
             if(ultimoClick.TryGetComponent(out IInteractuable interactuable))
             {
                 agent.stoppingDistance = distanciaInteraccion;
@@ -83,19 +84,25 @@ public class PlayerIsometrica : MonoBehaviour, IIDanhable
                     ultimoClick = null;
                 }
             }
-        }
-        else if (ultimoClick.TryGetComponent(out IIDanhable _))
-        {
-            objetivoActual = ultimoClick;
-            agent.stoppingDistance = distanciaAtaque;
-            if(!agent.pathPending && agent.remainingDistance < agent.stoppingDistance)
+            else if (ultimoClick.TryGetComponent(out IIDanhable _))
             {
-                EnfocarAPlayer();
-                visualSystem.StartAttacking();
+                objetivoActual = ultimoClick;
+                agent.stoppingDistance = distanciaAtaque;
+                if (!agent.pathPending && agent.remainingDistance < agent.stoppingDistance)
+                {
+                    EnfocarAObjetivo();
+                    VisualSystem.StartAttacking();
+                }
             }
+            else
+            {
+                agent.stoppingDistance = 0f;
+            }
+
         }
+        
     }
-    private void EnfocarAPlayer()
+    private void EnfocarAObjetivo()
     {
         Vector3 direccionATarget = (objetivoActual.transform.position - transform.position).normalized;
         direccionATarget.y = 0f;
@@ -146,10 +153,7 @@ public class PlayerIsometrica : MonoBehaviour, IIDanhable
         }
     }
 
-    public void HacerDanho(float danhoAtaque)
-    {
-        Debug.Log("Me hacen pupa: " +  danhoAtaque);
-    }
+    
 
     
 }

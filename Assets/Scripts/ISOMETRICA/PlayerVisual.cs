@@ -13,19 +13,14 @@ public class PlayerVisual : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        /*if(gM.idchara)
-        {
-            player.VisualSystem = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }*/
+        
     }
     void Start()
     {
         anim = GetComponent<Animator>();
         //GetComponentInParent<NavMeshAgent>
+        player.VisualSystem = this;
+        
     }
 
     // Update is called once per frame

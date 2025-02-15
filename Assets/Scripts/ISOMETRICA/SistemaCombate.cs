@@ -82,7 +82,7 @@ public class SistemaCombate : MonoBehaviour
     private void Atacar()
     {
         //Hacaer daño al target.
-        main.Target.GetComponent<PlayerIsometrica>().HacerDanho(danhoAtaque);
+        main.Target.GetComponent<PlayerIsometrica>().RecibirDanho(danhoAtaque);
 
     }
     private void FinAnimacionAtaque()
