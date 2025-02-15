@@ -48,6 +48,8 @@ public class SistemaCombate : MonoBehaviour
                 
                 //Atacar
                 anim.SetBool("attacking", true);
+                agent.isStopped = true;
+                
 
             }
         }
@@ -88,6 +90,8 @@ public class SistemaCombate : MonoBehaviour
     private void FinAnimacionAtaque()
     {
         anim.SetBool("attacking", false);
+        agent.isStopped = false;
+        Debug.Log("FinAnimacionAtaque llamado");
     }
     #endregion
 }

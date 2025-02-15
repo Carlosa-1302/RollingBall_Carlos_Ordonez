@@ -13,13 +13,13 @@ public class PlayerVisual : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        player.VisualSystem = this;
         
     }
     void Start()
     {
         anim = GetComponent<Animator>();
         //GetComponentInParent<NavMeshAgent>
-        player.VisualSystem = this;
         
     }
 

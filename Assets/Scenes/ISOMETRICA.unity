@@ -18508,7 +18508,7 @@ Transform:
   - {fileID: 4566646353235203777}
   - {fileID: 2427571920716509448}
   m_Father: {fileID: 9085484648975936551}
-  m_LocalEulerAnglesHint: {x: 20.640385, y: 21.851042, z: 90.61356}
+  m_LocalEulerAnglesHint: {x: 7.186741, y: -86.71222, z: 90.3218}
 --- !u!4 &2397260283124275129
 Transform:
   m_ObjectHideFlags: 0
@@ -18555,7 +18555,7 @@ Transform:
   - {fileID: 7577999435598801147}
   - {fileID: 1002498649036114645}
   m_Father: {fileID: 1642017645124846257}
-  m_LocalEulerAnglesHint: {x: 22.385687, y: -26.908165, z: -90.81443}
+  m_LocalEulerAnglesHint: {x: 6.8926444, y: 92.700806, z: -90.07873}
 --- !u!1 &2607608167226933169
 GameObject:
   m_ObjectHideFlags: 0
@@ -18851,7 +18851,7 @@ Transform:
   - {fileID: 3676453217898064583}
   - {fileID: 3158320205394020385}
   m_Father: {fileID: 4893512853175798395}
-  m_LocalEulerAnglesHint: {x: 77.59714, y: -15.942154, z: -15.783264}
+  m_LocalEulerAnglesHint: {x: 87.9983, y: -157.31252, z: -157.21616}
 --- !u!33 &4499071519255302269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19129,7 +19129,7 @@ MonoBehaviour:
   main: {fileID: 1949192093}
   agent: {fileID: 1949192089}
   velocidadCombate: 7
-  distanciAtaque: 0.98
+  distanciAtaque: 2
   danhoAtaque: 10
   anim: {fileID: 5233904801739854019}
 --- !u!1 &5442951975528600529
