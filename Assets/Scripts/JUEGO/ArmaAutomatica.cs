@@ -44,41 +44,49 @@ public class ArmaAutomatica : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(Input.GetMouseButton(0) && timer >= misDatos.cadenciaAtaque)
+
+        if (Input.GetMouseButton(0) && timer >= misDatos.cadenciaAtaque)
         {
-            Vector3 origenDisparo;
-            Vector3 direccionDisparo;
-
-            if (player.EnPrimeraPersona)
-            {
-                origenDisparo = cam.transform.position; // Frontal de la cámara en primera persona
-                direccionDisparo = cam.transform.forward;
-            }
-            else
-            {
-                origenDisparo = balaPos.position; // Desde el arma en tercera persona
-                direccionDisparo = balaPos.forward;
-            }
-
-
-            GameObject BalaSpawn = Instantiate(bala, origenDisparo, Quaternion.LookRotation(direccionDisparo));
-            Rigidbody balaRigid = BalaSpawn.GetComponent<Rigidbody>();
-            balaRigid.velocity = direccionDisparo * 50;
-
-            GameObject BalaCasquillo = Instantiate(balaCase, balaCasePos.position, balaCasePos.rotation);
-            Rigidbody balaCaseRigid = BalaCasquillo.GetComponent<Rigidbody>();
-            Vector3 casquilloVec = balaCasePos.forward * Random.Range(-3, -2) + Vector3.up * Random.Range(2, 3);
-            balaCaseRigid.AddForce(casquilloVec, ForceMode.Impulse);
-            balaCaseRigid.AddTorque(Vector3.up * 10, ForceMode.Impulse);
-
-
-
-            anim.SetTrigger("shot");
-            if (Physics.Raycast(cam.transform.position,cam.transform.forward,out RaycastHit hitInfo, misDatos.distanciaAtaque))
-            {
-                hitInfo.transform.GetComponentInChildren<Enemigo>().RecibirDanho(misDatos.danhoAtaque);
-            }
-            timer = 0;
+            Disparar();
+            timer -= misDatos.cadenciaAtaque; // Mantiene la sincronización correcta
         }
     }
+
+    private void Disparar()
+    {
+        Vector3 origenDisparo;
+        Vector3 direccionDisparo;
+
+        if (player.EnPrimeraPersona)
+        {
+            origenDisparo = cam.transform.position;
+            direccionDisparo = cam.transform.forward;
+        }
+        else
+        {
+            origenDisparo = balaPos.position;
+            direccionDisparo = balaPos.forward;
+        }
+
+        GameObject BalaSpawn = Instantiate(bala, origenDisparo, Quaternion.LookRotation(direccionDisparo));
+        Rigidbody balaRigid = BalaSpawn.GetComponent<Rigidbody>();
+        balaRigid.velocity = direccionDisparo * 50;
+
+        GameObject BalaCasquillo = Instantiate(balaCase, balaCasePos.position, balaCasePos.rotation);
+        Rigidbody balaCaseRigid = BalaCasquillo.GetComponent<Rigidbody>();
+        Vector3 casquilloVec = balaCasePos.forward * Random.Range(-3, -2) + Vector3.up * Random.Range(2, 3);
+        balaCaseRigid.AddForce(casquilloVec, ForceMode.Impulse);
+        balaCaseRigid.AddTorque(Vector3.up * 10, ForceMode.Impulse);
+
+        anim.SetTrigger("shot");
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
+        {
+            Enemigo enemigo = hitInfo.transform.GetComponentInChildren<Enemigo>();
+            if (enemigo != null)
+            {
+                enemigo.RecibirDanho(misDatos.danhoAtaque);
+            }
+        }
+    }
+
 }
